@@ -6,11 +6,11 @@ const Register = lazy(() => import ("../../views/auth/Register"))
 const publicRoutes = [
     {
         path: '/login',
-        Element: <Login/>
+        element: <Login/>
     },
     {
         path: '/register',
-        Element: <Register/>
+        element: <Register/>
     }
 ]
 
