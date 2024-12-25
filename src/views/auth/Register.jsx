@@ -1,4 +1,6 @@
 import React from "react";
+import {Link} from "react-router-dom"
+import { FaFacebook, FaGoogle } from "react-icons/fa";
 
 const Register = () => {
   return (
@@ -59,7 +61,31 @@ const Register = () => {
               </label>
             </div>
 
-            <button className="bg-slate-600 w-full hover:shadow-blue-300 /50 hover:shadow-lg text-white rounded-md px-7 py-2 mb-3">Sign Up</button>
+            <button className="bg-slate-600 w-full hover:shadow-slate-700/50 hover:shadow-lg text-white rounded-md px-7 py-2 mb-3">Sign Up</button>
+
+            <div className="flex items-center mb-3 gap-3 justify-center">
+                <p>Already have an account? <Link to="/login" className="font-bold text-slate-600">Sign In</Link> </p>
+            </div>
+
+            <div className="w-full flex justify-center items-center mb-3">
+                <div className="w-[45%] h-[1px] bg-slate-700"></div>
+                <div className="w-[10%] flex justify-center items-center">
+                    <span className="pb-1 ">Or</span>
+                </div>
+                <div className="w-[45%] h-[1px] bg-slate-700"></div>
+            </div>
+
+            <div className="flex justify-center items-center gap-3">
+                <div className="w-[135px] h-[35px] flex justify-center items-center rounded-md bg-orange-600 shadow-lg hover:shadow-orange-700/50 cursor-pointer overflow-hidden">
+                    <span><FaGoogle /></span>
+                </div>
+
+                <div className="w-[135px] h-[35px] flex justify-center items-center rounded-md bg-blue-700 shadow-lg hover:shadow-blue-700/50 cursor-pointer overflow-hidden">
+                    <FaFacebook/>
+                </div>
+            </div>
+
+
           </form>
         </div>
       </div> 
