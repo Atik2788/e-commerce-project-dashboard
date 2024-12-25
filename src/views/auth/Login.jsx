@@ -9,7 +9,7 @@ const Login = () => {
         <div className="bg-[#36b9c0] p-4 rounded-md">
           <h2 className="text-xl mb-3 font-bold">Welcome to Ecommerce</h2>
           <p className="text-sm mb-3 font-medium">
-            Please enter your email & password
+            Please Sign In your account
           </p>
 
           <form>
@@ -36,17 +36,13 @@ const Login = () => {
               />
             </div>
 
-            <div className="flex items-center w-full gap-3 mb-3">
-              <input className="w-4 h-4" type="checkbox" name="checkbox" id="checkbox"/>
-              <label htmlFor="checkbox">I agree to privacy policy & trems</label>
-            </div>
 
             <button className="w-full bg-slate-600 hover:shadow-slate-700/50 hover:shadow-lg rounded-md px-7 py-2 mb-3">
             Log In
             </button>
 
             <div className="flex items-center justify-center mb-3">
-              <p>Are you new here? <Link to="/register" className="font-bold text-slate-600">Register</Link></p>
+              <p>Don't have and account? <Link to="/register" className="font-bold text-slate-600">Register</Link></p>
             </div>
 
             <div className="w-full flex justify-center items-center mb-3">
