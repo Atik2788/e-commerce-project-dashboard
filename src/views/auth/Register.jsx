@@ -18,7 +18,8 @@ const Register = () => {
   }
 
   const submit = (e) =>{
-    e.preventDefault.value;
+    e.preventDefault()
+    console.log(state);
   }
 
   return (
@@ -30,7 +31,7 @@ const Register = () => {
             Please register your account
           </p>
 
-          <form>
+          <form onSubmit={submit}>
             <div className="flex flex-col w-full gap-1 mb-3 ">
               <label htmlFor="name">Name</label>
               <input 
