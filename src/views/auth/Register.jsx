@@ -73,7 +73,7 @@ const Register = () => {
 
             <div className="flex items-center w-full gap-3 mb-3 ">
               <input
-                className="w-4 h-4 text-blue-600 overflow-hidden bg-gray-200 rounded border-gray300 focus:ring-blue-500 "
+                className="w-4 h-4 text-blue-600 overflow-hidden bg-transparent rounded border-gray300 focus:ring-blue-500 "
                 type="checkbox"
                 name="checkbox"
                 id="checkbox"
