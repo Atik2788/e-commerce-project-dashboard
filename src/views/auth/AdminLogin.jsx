@@ -27,9 +27,9 @@ const AdminLogin = () => {
       <div className="w-[350px] text-[#ffffff] ">
         <div className="bg-[#36b9c0] p-4 rounded-md">
           
-          <div>
-            <div>
-                <img src="http://localhost:3000/images/logo.png " alt="image" />
+          <div className="h-[70 0px] flex justify-center items-center pb-4">
+            <div className="w-[180px] h-[60px]">
+                <img className="w-full h-full" src="http://localhost:3000/images/logo.png " alt="image" />
             </div>
           </div>
 
