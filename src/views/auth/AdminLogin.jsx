@@ -26,6 +26,8 @@ const AdminLogin = () => {
         <div className="bg-gradient-to-r from-[#8ae1db] to-[#36b9c0] w-96 h-96 rounded-full opacity-20 animate-pulse absolute bottom-20 right-20"></div>
         <div className="bg-gradient-to-r from-[#8ae1db] to-[#36b9c0] w-52 h-52 rounded-full opacity-20 animate-pulse absolute -top-28 -right-5"></div>
       </div>
+      
+    
 
       <div className="relative w-[400px] text-[#ffffff] z-10">
         <div className="bg-[#36b9c0] p-8 rounded-xl shadow-lg transform transition-all hover:scale-105 hover:shadow-xl">
