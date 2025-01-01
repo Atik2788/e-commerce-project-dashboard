@@ -5,6 +5,16 @@ export const authReducer = createSlice({
     initialState:{
         successMessage: "",
         errorMessage: "",
+        loader: false,
+        userInfo: ""
+    },
+    reducers : {
         
+    },
+
+    extraReducers : {
+
     }
 })
+
+export default authReducer.reducer
