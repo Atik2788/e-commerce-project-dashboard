@@ -26,6 +26,15 @@ const AdminLogin = () => {
     // console.log(state);
   };
 
+
+  const overrideStyle = {
+    display: "flex",
+     margin: "0 auto",
+     height: "24px",
+     justifyContent: "center",
+     alignItem: "center"
+  }
+
   return (
     <div className="min-w-screen min-h-screen bg-[#8ae1db] flex justify-center items-center overflow-hidden">
       {/* Background animation */}
@@ -84,7 +93,7 @@ const AdminLogin = () => {
 
             <button disabled = {loader ? true : false} className="w-full bg-[#8ae1db] text-[#ffffff] hover:bg-[#6fd2cf] rounded-md px-5 py-3 transition-all duration-200 transform hover:scale-105">
               {
-                loader ? <PropagateLoader/> : 'Log In'
+                loader ? <PropagateLoader color="#fff " cssOverride={overrideStyle}/> : 'Log In'
               }
             </button>
           </form>
