@@ -5,10 +5,11 @@ import Sidebar from "./Sidebar";
 
 const MainLayout = () => {
   return (
-    <div className="bg-[#8ae1db] w-full">
+    <div className="bg-[#8ae1db] w-full min-h-screen">
       <Header />
       <Sidebar />
-      <div>
+
+      <div className="ml-0 lg:ml-[260px] pt-[95px] transition-all">
         <Outlet />
       </div>
     </div>
