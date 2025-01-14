@@ -37,7 +37,7 @@ const Sidebar = () => {
                 {/*  conditioning css */}
                 <Link
                   to={n.path}
-                  className={`${pathname === n.path ? "bg-[#277367] shadow-indigo-500/50 text-white duration-500 rounded " : "duration-500"} flex items-center justify-center gap-3 py-1 font-bold`}
+                  className={`${pathname === n.path ? "bg-[#277367] shadow-indigo-500/50 text-white duration-500 rounded-sm " : "duration-500"} flex items-center justify-start pl-4 gap-2 py-1 font-bold hover:pl-8 transition-all w-full mb-1 `}
                 >
                   <span>{n.icon}</span>
                   <span>{n.title}</span>
