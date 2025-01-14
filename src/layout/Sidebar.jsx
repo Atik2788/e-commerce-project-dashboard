@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { getNav } from "../navigation";
 
 const Sidebar = () => {
+  const { pathname } = useLocation();
   const [allNav, setAllNave] = useState([]);
 
   useEffect(() => {
@@ -10,7 +11,7 @@ const Sidebar = () => {
     setAllNave(navs);
   }, []);
 
-  console.log(allNav);
+  // console.log(allNav);
 
   return (
     <div>
@@ -29,7 +30,22 @@ const Sidebar = () => {
           </Link>
         </div>
 
-        <div className="px-[16px]"></div>
+        <div className="px-[16px]">
+          <ul>
+            {allNav.map((n, i) => (
+              <li key={i}>
+                {/*  conditioning css */}
+                <Link
+                  to={n.path}
+                  className={`${pathname === n.path ? "bg-[#277367] shadow-indigo-500/50 text-white duration-500 rounded " : "duration-500"} flex items-center justify-center gap-3 py-1 font-bold`}
+                >
+                  <span>{n.icon}</span>
+                  <span>{n.title}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
