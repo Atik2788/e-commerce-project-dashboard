@@ -5,6 +5,15 @@ export const allNav = [
     {
         id: 1,
         title: 'Dashboard',
-        icon: <MdDashboard />
+        icon: <MdDashboard />,
+        role: 'admin',
+        path: '/admin/dashboard'
+    },
+    {
+        id: 1,
+        title: 'Dashboard',
+        icon: <MdDashboard />,
+        role: 'seller',
+        path: '/admin/dashboard'
     }
 ]
