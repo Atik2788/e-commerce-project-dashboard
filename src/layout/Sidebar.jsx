@@ -5,7 +5,7 @@ const Sidebar = () => {
 
     const [allNav, setAllNave] = useState([])
     useEffect(() =>{
-        
+    const navs = getNav('admin')  
     })
 
     return (
