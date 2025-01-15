@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { getNav } from "../navigation";
+import { BiLogOutCircle } from "react-icons/bi";
 
 const Sidebar = () => {
   const { pathname } = useLocation();
@@ -37,13 +38,24 @@ const Sidebar = () => {
                 {/*  conditioning css */}
                 <Link
                   to={n.path}
-                  className={`${pathname === n.path ? "bg-[#277367] shadow-indigo-500/50 text-white duration-500 rounded-sm " : "duration-500"} flex items-center justify-start pl-4 gap-2 py-1 font-bold hover:pl-8 transition-all w-full mb-1 `}
+                  className={`${
+                    pathname === n.path
+                      ? "bg-[#277367] shadow-indigo-500/50 text-white duration-500 rounded-sm "
+                      : "duration-500"
+                  } flex items-center justify-start pl-4 gap-2 py-1 font-bold hover:pl-8 transition-all w-full mb-1 `}
                 >
                   <span>{n.icon}</span>
                   <span>{n.title}</span>
                 </Link>
               </li>
             ))}
+
+            <li>
+              <button className="flex items-center justify-start pl-4 gap-2 py-1 font-bold duration-500 hover:pl-8 transition-all w-full mb-1">
+                <span className="font-extrabold"><BiLogOutCircle /></span>
+                <span>Logout</span>
+              </button>
+            </li>
           </ul>
         </div>
       </div>
