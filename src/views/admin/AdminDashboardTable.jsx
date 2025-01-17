@@ -22,13 +22,17 @@ const AdminDashboardTable = () => {
           </thead>
 
           <tbody>
-            <tr>
-                <td scope="row" className="py-3 px-4 font-medium whitespace-nowrap ">#34665</td>
-                <td scope="row" className="py-3 px-4 font-medium whitespace-nowrap ">$499</td>
-                <td scope="row" className="py-3 px-4 font-medium whitespace-nowrap ">Pending</td>
-                <td scope="row" className="py-3 px-4 font-medium whitespace-nowrap ">Pending</td>
-                <td scope="row" className="py-3 px-4 font-medium whitespace-nowrap ">View</td>
-            </tr> 
+          {
+                [1, 2, 3, 4, 5].map((d, i) =>
+                <tr>
+                    <td scope="row" className="py-3 px-4 font-medium whitespace-nowrap ">#34665</td>
+                    <td scope="row" className="py-3 px-4 font-medium whitespace-nowrap ">$499</td>
+                    <td scope="row" className="py-3 px-4 font-medium whitespace-nowrap ">Pending</td>
+                    <td scope="row" className="py-3 px-4 font-medium whitespace-nowrap ">Pending</td>
+                    <td scope="row" className="py-3 px-4 font-medium whitespace-nowrap "><Link>View</Link></td>
+                </tr> 
+                )}
+            
           </tbody>
         </table>
       </div>
