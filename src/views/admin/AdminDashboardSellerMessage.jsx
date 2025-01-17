@@ -12,6 +12,7 @@ const AdminDashboardSellerMessage = () => {
         <Link className="font-semibold text-sm text-[#d0d2d6]">View All</Link>
       </div>
 
+      {/* seller message section */}
       <div className="flex flex-col gap-2 pt-6 text-[#d0d2d6]">
         <AdminDashboardSellerMessageSingle user={'Admin'} time={'2 days ago'} message={"How are you?"}/>
         <AdminDashboardSellerMessageSingle user={'Seller'} time={'3 hours ago'} message={"Can we talk?"}/>
