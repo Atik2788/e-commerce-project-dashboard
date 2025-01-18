@@ -1,8 +1,8 @@
 import React from "react";
-import AdminDashboardHeader from "./AdminDashboardHeader";
-import AdminDashboardChart from "./AdminDashboardChart";
-import AdminDashboardSellerMessage from "./AdminDashboardSellerMessage";
-import AdminDashboardTable from "./AdminDashboardTable";
+import AdminDashboardHeader from "./admin suported files/AdminDashboardHeader";
+import AdminDashboardChart from "./admin suported files/AdminDashboardChart";
+import AdminDashboardSellerMessage from "./admin suported files/AdminDashboardSellerMessage";
+import AdminDashboardTable from "./admin suported files/AdminDashboardTable";
 
 const AdminDashboard = () => {
   return (
