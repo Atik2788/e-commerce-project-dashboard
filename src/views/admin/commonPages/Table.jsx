@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FaEdit, FaRegTrashAlt  } from "react-icons/fa";
 
 const Table = ({ headers, rows }) => {
   return (
@@ -20,18 +21,32 @@ const Table = ({ headers, rows }) => {
             <td colSpan={headers.length} className="h-3"></td>
           </tr>
           {rows.map((row, index) => (
-            <tr key={index} className="hover:bg-[#3da896] mt-5 ">
+            <tr
+              key={index}
+              className="hover:bg-[#43b3a0] justify-center items-center"
+            >
               <td className="">{row.no}</td>
-              <td className="flex justify-center items-center">
+              <td className="whitespace-nowrap flex justify-center items-center py-2">
                 <img
                   src={row.image}
                   alt={row.name}
-                  className="h-10 w-10 rounded-full"
+                  className=" w-10 rounded-full"
                 />
               </td>
               <td className="">{row.name}</td>
               <td className="">
-                <Link>View</Link>
+                <div className="flex gap-2 w-20 mx-auto">
+                  <p className="flex items-center justify-center bg-yellow-500 hover:bg-yellow-300 rounded-full w-8 h-8 mx-auto">
+                    <Link className="">
+                      <FaEdit className="text-black" />
+                    </Link>
+                  </p>
+                  <p className="flex items-center  justify-center bg-red-500 hover:bg-red-300 rounded-full w-8 h-8 mx-auto">
+                    <Link className="">
+                      <FaRegTrashAlt  className="text-black" />
+                    </Link>
+                  </p>
+                </div>
               </td>
             </tr>
           ))}

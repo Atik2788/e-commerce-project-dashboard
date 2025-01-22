@@ -14,29 +14,33 @@ const Category = () => {
   const rows = [
     {
       no: 1,
-      image: "https://images.pexels.com/photos/934070/pexels-photo-934070.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", // Placeholder image
-      name: "Electronics",
+      image: "http://localhost:3000/images/category/1.jpg", // Placeholder image
+      name: "Shoo",
     },
     {
       no: 2,
-      image: "https://images.pexels.com/photos/934070/pexels-photo-934070.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", // Placeholder image
-      name: "Groceries",
+      image: "http://localhost:3000/images/category/2.jpg", // Placeholder image
+      name: "Watch",
     },
     {
       no: 3,
-      image: "https://images.pexels.com/photos/934070/pexels-photo-934070.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", // Placeholder image
-      name: "Clothing",
+      image: "http://localhost:3000/images/category/3.jpg", // Placeholder image
+      name: "Cloth",
     },
     {
       no: 4,
-      image: "https://images.pexels.com/photos/934070/pexels-photo-934070.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", // Placeholder image
-      name: "Clothing",
+      image: "http://localhost:3000/images/category/4.jpg", // Placeholder image
+      name: "Bag",
     },
   ];
+
+
 
   return (
     <div className="px-2 lg:px-7 pt-5">
       <div className="flex flex-wrap w-full">
+
+        {/* left side div */}
         <div className="w-full lg:w-7/12">
 
           <div className="w-full p-4 bg-[#39a290] rounded-md ">
@@ -55,8 +59,19 @@ const Category = () => {
             </div>
           </div>
 
-          <div className="w-full lg:w-5/12"></div>
+
+        {/* right side div */}
+          <div className="w-full lg:w-5/12">
+
+          </div>
         </div>
+
+
+        <div>
+
+        </div>
+
+
       </div>
     </div>
   );
