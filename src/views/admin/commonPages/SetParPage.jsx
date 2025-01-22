@@ -1,5 +1,5 @@
 
-const OrdersHeader = ({setParPage}) => {
+const SetParPage = ({setParPage}) => {
 
     return (
 
@@ -15,4 +15,4 @@ const OrdersHeader = ({setParPage}) => {
     );
 };
 
-export default OrdersHeader;
+export default SetParPage;

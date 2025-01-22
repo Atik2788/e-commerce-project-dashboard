@@ -1,7 +1,7 @@
 import { useState } from "react";
-import OrdersHeader from "./orders suported files/OrdersHeader";
+import SetParPage from "./commonPages/SetParPage";
 import OrdersTable from "./orders suported files/OrdersTable";
-import Pagination from "./orders suported files/Pagination";
+import Pagination from "./commonPages/Pagination";
 
 const Orders = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -12,7 +12,7 @@ const Orders = () => {
   return (
       <div className="px-2 lg:px-7 pt-5">
         <div className="w-full p-4 bg-[#39a290] rounded-md ">
-          <OrdersHeader setParPage={setParPage} />
+          <SetParPage setParPage={setParPage} />
 
           {/* table */}
           <OrdersTable show={show} setShow={setShow} />
@@ -26,7 +26,6 @@ const Orders = () => {
               showItem={3}
             />
           </div>
-
 
         </div>
       </div>
