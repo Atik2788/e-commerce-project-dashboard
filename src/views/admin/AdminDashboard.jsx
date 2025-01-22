@@ -3,6 +3,7 @@ import AdminDashboardHeader from "./admin suported files/AdminDashboardHeader";
 import AdminDashboardChart from "./admin suported files/AdminDashboardChart";
 import AdminDashboardSellerMessage from "./admin suported files/AdminDashboardSellerMessage";
 import AdminDashboardTable from "./admin suported files/AdminDashboardTable";
+import { Link } from "react-router-dom";
 
 const AdminDashboard = () => {
   return (
@@ -19,15 +20,21 @@ const AdminDashboard = () => {
 
         {/* seller chat section */}
         <div className="w-full lg:w-5/12 lg:pl-4 mt-6 lg:mt-0">
-          <AdminDashboardSellerMessage/>
+          <AdminDashboardSellerMessage />
         </div>
       </div>
       {/* chart and message section end*/}
 
       {/* dashboard table */}
-      <AdminDashboardTable/>
-
-
+      <div className="w-full p-4 bg-[#39a290] rounded-md mt-6">
+        <div className="flex justify-between items-center pb-3">
+          <h2 className="font-semibold text-lg text-[#d0d2d6] ">
+            Recent Orders
+          </h2>
+          <Link className="font-semibold text-sm text-[#d0d2d6]">View All</Link>
+        </div>
+        <AdminDashboardTable />
+      </div>
     </div>
   );
 };
