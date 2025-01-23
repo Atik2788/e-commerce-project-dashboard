@@ -77,6 +77,11 @@ const Category = () => {
                     <span><FaImages /></span>
                     <span>Select Image</span>
                   </label>
+                  <input type="file" name="file" className="hidden" id="image" />
+
+                  <div>
+                    <button className="bg-[#134d49] w-full hover:shadow-[#8ae1db] hover:shadow-md text-white rounded-md py-2 my-2">Add Category</button>
+                  </div>
                 </div>
 
               </form>
