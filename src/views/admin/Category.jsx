@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import SetParPage from "./commonPages/SetParPage";
 import Pagination from "./commonPages/Pagination";
 import AdminDashboardTable from "./admin suported files/AdminDashboardTable";
+import { FaEdit, FaRegTrashAlt } from "react-icons/fa";
 import Table from "./commonPages/Table";
 import { FaImages } from "react-icons/fa6";
 import { IoCloseSharp } from "react-icons/io5";
@@ -18,21 +19,29 @@ const Category = () => {
       no: 1,
       image: "http://localhost:3000/images/category/1.jpg", // Placeholder image
       name: "Shoo",
+      icon1: <FaEdit className="text-black" />,
+      icon2: <FaRegTrashAlt className="text-black" />
     },
     {
       no: 2,
       image: "http://localhost:3000/images/category/2.jpg", // Placeholder image
       name: "Watch",
+      icon1: <FaEdit className="text-black" />,
+      icon2: <FaRegTrashAlt className="text-black" />
     },
     {
       no: 3,
       image: "http://localhost:3000/images/category/3.jpg", // Placeholder image
       name: "Cloth",
+      icon1: <FaEdit className="text-black" />,
+      icon2: <FaRegTrashAlt className="text-black" />
     },
     {
       no: 4,
       image: "http://localhost:3000/images/category/4.jpg", // Placeholder image
       name: "Bag",
+      icon1: <FaEdit className="text-black" />,
+      icon2: <FaRegTrashAlt className="text-black" />
     },
   ];
 
@@ -57,7 +66,7 @@ const Category = () => {
           <div className="w-full p-4 bg-[#39a290] rounded-md">
             <SetParPage setParPage={setParPage} />
 
-            <Table headers={headers} rows={rows} />
+            <Table headers={headers} rows={rows} iconbgColor="bg-yellow-500 hover:bg-yellow-300" icon2bgColor="bg-red-500 hover:bg-red-300"/>
 
             <div className="w-full flex justify-end mt-4 bottom-4 right-4">
               <Pagination

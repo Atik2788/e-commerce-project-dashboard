@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaEdit, FaRegTrashAlt  } from "react-icons/fa";
 
-const Table = ({ headers, rows }) => {
+
+const Table = ({ headers, rows, iconbgColor, icon2bgColor }) => {
   return (
     <div className="relative overflow-x-auto">
       <table className="w-full text-sm text-[#d0d2d6] text-center">
@@ -25,30 +25,60 @@ const Table = ({ headers, rows }) => {
               key={index}
               className="hover:bg-[#43b3a0] justify-center items-center"
             >
-              <td className="">{row.no}</td>
-              <td className="whitespace-nowrap flex justify-center items-center py-2">
-                <img
-                  src={row.image}
-                  alt={row.name}
-                  className=" w-10 rounded-full"
-                />
-              </td>
-              <td className="">{row.name}</td>
-              <td className="">
-                <div className="flex gap-2 w-20 mx-auto">
-                  <p className="flex items-center justify-center bg-yellow-500 hover:bg-yellow-300 rounded-full w-8 h-8 mx-auto">
-                    <Link className="">
-                      <FaEdit className="text-black" />
-                    </Link>
-                  </p>
-                  <p className="flex items-center  justify-center bg-red-500 hover:bg-red-300 rounded-full w-8 h-8 mx-auto">
-                    <Link className="">
-                      <FaRegTrashAlt  className="text-black" />
-                    </Link>
-                  </p>
-                </div>
-              </td>
+              {row.no && <td className="">{row.no}</td>}
+
+              {row.image && (
+                <td className="whitespace-nowrap flex justify-center items-center py-2">
+                  <img
+                    src={row.image}
+                    alt={row.name}
+                    className=" w-10 rounded-full"
+                  />
+                </td>
+              )}
+
+              {row.name && <td className="">{row.name}</td>}
+              {row.shopName && <td className="">{row.shopName}</td>}
+              {row.paymentStatus && <td className="">{row.paymentStatus}</td>}
+              {row.email && <td className="">{row.email}</td>}
+              {row.division && <td className="">{row.division}</td>}
+              {row.district && <td className="">{row.district}</td>}
+
+              {row.icon1 && row.icon2 ? (
+                <td className="">
+                  <div className="flex gap-2 w-20 mx-auto">
+                    <p
+                      className={` ${iconbgColor} flex items-center justify-center  rounded-full w-8 h-8 mx-auto`}
+                    >
+                      <Link className="">
+                        {row.icon1}
+                      </Link>
+                    </p>
+                    <p
+                      className={`${icon2bgColor} flex items-center justify-center rounded-full w-8 h-8 mx-auto`}
+                    >
+                      <Link className="">
+                        {row.icon2}
+                      </Link>
+                    </p>
+                  </div>
+                </td>) 
+                : (
+                <td className="">
+                  <div className="mx-auto">
+                    <p
+                      className={` ${iconbgColor} flex items-center justify-center  rounded-full w-8 h-8 mx-auto`}
+                    >
+                      <Link className="">
+                        {row.icon1}
+                      </Link>
+                    </p>
+                  </div>
+                </td>
+              )}
+              
             </tr>
+            
           ))}
         </tbody>
       </table>
