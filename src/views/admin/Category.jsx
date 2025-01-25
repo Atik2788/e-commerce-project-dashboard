@@ -48,7 +48,6 @@ const Category = () => {
   return (
     <div className="px-2 lg:px-7 pt-5">
 
-
       <div className="flex lg:hidden justify-between items-center mb-5 p-4 bg-[#39a290] rounded-md">
         <h1 className="text-[#d0d2d6] font-semibold text-lg">Category</h1>
         <button

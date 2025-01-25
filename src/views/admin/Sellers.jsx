@@ -61,7 +61,7 @@ const Sellers = () => {
       <div className="flex fex-col justify-between items-center mb-5 p-4 bg-[#39a290] rounded-md">
         <div className="w-full p-4 bg-[#39a290] rounded-md">
           <SetParPage setParPage={setParPage} />
-          <Table headers={headers} rows={rows} iconbgColor = "bg-green-700 hover:bg-green-500 text-black"/>
+          <Table headers={headers} rows={rows} iconbgColor = "bg-green-600 hover:bg-green-500 text-black"/>
           <div className=" w-full flex justify-end items-center mt-5">
           <Pagination
                 setCurrentPage={setCurrentPage}
