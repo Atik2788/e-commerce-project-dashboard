@@ -4,7 +4,7 @@ import Table from "./commonPages/Table";
 import Pagination from "./commonPages/Pagination";
 import { FaRegEye } from "react-icons/fa";
 
-const Sellers = () => {
+const DeactiveSellers = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [parPage, setParPage] = useState(5);
 
@@ -58,7 +58,7 @@ const Sellers = () => {
 
   return (
     <div className="px-2 lg:px-7 pt-5">
-      <h1 className="text-[20px] font-bold mb-3">Seller</h1>
+            <h1 className="text-[20px] font-bold mb-3">Deactive Seller</h1>
 
       <div className="flex fex-col justify-between items-center mb-5 p-4 bg-[#39a290] rounded-md">
         <div className="w-full p-4 bg-[#39a290] rounded-md">
@@ -79,4 +79,4 @@ const Sellers = () => {
   );
 };
 
-export default Sellers;
+export default DeactiveSellers;
