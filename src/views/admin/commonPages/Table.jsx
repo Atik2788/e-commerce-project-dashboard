@@ -39,8 +39,9 @@ const Table = ({ headers, rows, iconbgColor, icon2bgColor }) => {
 
               {row.name && <td className="">{row.name}</td>}
               {row.shopName && <td className="">{row.shopName}</td>}
-              {row.paymentStatus && <td className="">{row.paymentStatus}</td>}
               {row.email && <td className="">{row.email}</td>}
+              {row.paymentStatus && <td className="">{row.paymentStatus}</td>}
+              {row.status && <td className="">{row.status}</td>}
               {row.division && <td className="">{row.division}</td>}
               {row.district && <td className="">{row.district}</td>}
 

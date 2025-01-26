@@ -8,50 +8,42 @@ const DeactiveSellers = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [parPage, setParPage] = useState(5);
 
-  const headers = ["No", "Image", "Name", "Shop Name", "Payment Status", "Email", "Division", "District", "Action"];
+  const headers = ["No", "Image", "Name", "Email", "Payment Status", "Status", "Action"];
   const rows = [
     {
       no: 1,
       image: "http://localhost:3000/images/category/1.jpg", // Placeholder image
       name: "Shoo",
-      shopName: "Easy",
-      paymentStatus: "Pending",
+      paymentStatus: "Active",
       email: "demo@gmail.com",
-      division: "Dhaka",
-      district: "Uttara",
+      status: "Deactive",
       icon1: <FaRegEye />
     },
     {
       no: 2,
       image: "http://localhost:3000/images/category/2.jpg", // Placeholder image
       name: "Watch",
-      shopName: "Easy",
-      paymentStatus: "Pending",
       email: "demo@gmail.com",
-      division: "Dhaka",
-      district: "Uttara",
+      paymentStatus: "Active",
+      status: "Deactive",
       icon1: <FaRegEye />
     },
     {
       no: 3,
       image: "http://localhost:3000/images/category/3.jpg", // Placeholder image
       name: "Cloth",
-      shopName: "Easy",
-      paymentStatus: "Pending",
       email: "demo@gmail.com",
-      division: "Dhaka",
-      district: "Uttara",
+      paymentStatus: "Active",
+      status: "Deactive",
       icon1: <FaRegEye />
     },
     {
       no: 4,
       image: "http://localhost:3000/images/category/4.jpg", // Placeholder image
       name: "Bag",
-      shopName: "Easy",
-      paymentStatus: "Pending",
       email: "demo@gmail.com",
-      division: "Dhaka",
-      district: "Uttara",
+      paymentStatus: "Active",
+      status: "Deactive",
       icon1: <FaRegEye />
     },
   ];

@@ -8,15 +8,15 @@ const Sellers = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [parPage, setParPage] = useState(5);
 
-  const headers = ["No", "Image", "Name", "Shop Name", "Payment Status", "Email", "Division", "District", "Action"];
+  const headers = ["No", "Image", "Name", "Shop Name", "Email", "Payment Status", "Division", "District", "Action"];
   const rows = [
     {
       no: 1,
       image: "http://localhost:3000/images/category/1.jpg", // Placeholder image
       name: "Shoo",
       shopName: "Easy",
-      paymentStatus: "Pending",
       email: "demo@gmail.com",
+      paymentStatus: "Pending",
       division: "Dhaka",
       district: "Uttara",
       icon1: <FaRegEye />
@@ -26,8 +26,8 @@ const Sellers = () => {
       image: "http://localhost:3000/images/category/2.jpg", // Placeholder image
       name: "Watch",
       shopName: "Easy",
-      paymentStatus: "Pending",
       email: "demo@gmail.com",
+      paymentStatus: "Pending",
       division: "Dhaka",
       district: "Uttara",
       icon1: <FaRegEye />
@@ -37,8 +37,8 @@ const Sellers = () => {
       image: "http://localhost:3000/images/category/3.jpg", // Placeholder image
       name: "Cloth",
       shopName: "Easy",
-      paymentStatus: "Pending",
       email: "demo@gmail.com",
+      paymentStatus: "Pending",
       division: "Dhaka",
       district: "Uttara",
       icon1: <FaRegEye />
@@ -48,8 +48,8 @@ const Sellers = () => {
       image: "http://localhost:3000/images/category/4.jpg", // Placeholder image
       name: "Bag",
       shopName: "Easy",
-      paymentStatus: "Pending",
       email: "demo@gmail.com",
+      paymentStatus: "Pending",
       division: "Dhaka",
       district: "Uttara",
       icon1: <FaRegEye />
