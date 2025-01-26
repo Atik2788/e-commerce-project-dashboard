@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-
 const Table = ({ headers, rows, iconbgColor, icon2bgColor }) => {
   return (
-    <div className="relative overflow-x-auto">
+    <div className="relative ">
       <table className="w-full text-sm text-[#d0d2d6] text-center">
         <thead className="text-sm text-[#d0d2d6] uppercase border-b border-slate-700">
           <tr>
@@ -28,12 +27,24 @@ const Table = ({ headers, rows, iconbgColor, icon2bgColor }) => {
               {row.no && <td className="">{row.no}</td>}
 
               {row.image && (
-                <td className="whitespace-nowrap flex justify-center items-center py-2">
-                  <img
-                    src={row.image}
-                    alt={row.name}
-                    className=" w-10 rounded-full"
-                  />
+                <td className="whitespace-nowrap flex justify-center items-center py-2 ">
+                  <div className="relative group">
+                    {/* Thumbnail Image */}
+                    <img
+                      src={row.image}
+                      alt={row.name}
+                      className="w-10 rounded-full"
+                    />
+                    {/* Full-Size Image on Hover */}
+                    <div className="absolute hidden group-hover:block top-0 left-10">
+                      <img
+                        src={row.image}
+                        alt={row.name}
+                        className="w-auto h-auto max-w-none max-h-none z-10   transform translate-y-[-50%] shadow-lg border border-gray-300 rounded-full"
+                        style={{ width: "300px", height: "300px" }} // Ensures the real image dimensions are shown
+                      />
+                    </div>
+                  </div>
                 </td>
               )}
 
@@ -51,35 +62,27 @@ const Table = ({ headers, rows, iconbgColor, icon2bgColor }) => {
                     <p
                       className={` ${iconbgColor} flex items-center justify-center  rounded-full w-8 h-8 mx-auto`}
                     >
-                      <Link className="">
-                        {row.icon1}
-                      </Link>
+                      <Link className="">{row.icon1}</Link>
                     </p>
                     <p
                       className={`${icon2bgColor} flex items-center justify-center rounded-full w-8 h-8 mx-auto`}
                     >
-                      <Link className="">
-                        {row.icon2}
-                      </Link>
+                      <Link className="">{row.icon2}</Link>
                     </p>
                   </div>
-                </td>) 
-                : (
+                </td>
+              ) : (
                 <td className="">
                   <div className="mx-auto">
                     <p
                       className={` ${iconbgColor} flex items-center justify-center  rounded-full w-8 h-8 mx-auto`}
                     >
-                      <Link className="">
-                        {row.icon1}
-                      </Link>
+                      <Link className="">{row.icon1}</Link>
                     </p>
                   </div>
                 </td>
               )}
-              
             </tr>
-            
           ))}
         </tbody>
       </table>
