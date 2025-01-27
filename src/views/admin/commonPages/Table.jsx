@@ -16,13 +16,13 @@ const Table = ({ headers, rows, iconbgColor, icon2bgColor }) => {
         </thead>
 
         <tbody className="mt-5">
-          <tr>
-            <td colSpan={headers.length} className="h-3"></td>
+          <tr className="">
+            <td colSpan={headers.length} className="h-3 "></td>
           </tr>
           {rows.map((row, index) => (
             <tr
               key={index}
-              className="hover:bg-[#43b3a0] justify-center items-center"
+              className="hover:bg-[#43b3a0] justify-center items-center border-b border-gray-400 h-[40px]"
             >
               {row.no && <td className="">{row.no}</td>}
 
