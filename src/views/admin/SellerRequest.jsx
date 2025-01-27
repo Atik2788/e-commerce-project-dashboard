@@ -16,7 +16,7 @@ const SellerRequest = () => {
       email: "demo@gmail.com",
       paymentStatus: "Inactive",
       status: "Pending",
-      icon1: <FaRegEye />
+      icon1: <FaRegEye />,
     },
     {
       no: 2,
@@ -24,7 +24,7 @@ const SellerRequest = () => {
       email: "demo@gmail.com",
       paymentStatus: "Inactive",
       status: "Pending",
-      icon1: <FaRegEye />
+      icon1: <FaRegEye />,
     },
     {
       no: 3,
@@ -32,34 +32,39 @@ const SellerRequest = () => {
       email: "demo@gmail.com",
       paymentStatus: "Inactive",
       status: "Pending",
-      icon1: <FaRegEye />
+      icon1: <FaRegEye />,
     },
     {
-     no: 4,
-     name: "Bag",
-     email: "demo@gmail.com",
-     paymentStatus: "Inactive",
-     status: "Pending",
-     icon1: <FaRegEye />
+      no: 4,
+      name: "Bag",
+      email: "demo@gmail.com",
+      paymentStatus: "Inactive",
+      status: "Pending",
+      icon1: <FaRegEye />,
     },
   ];
 
   return (
     <div className="px-2 lg:px-7 pt-5">
-            <h1 className="text-[20px] font-bold mb-3">Seller Request</h1>
+      <h1 className="text-[20px] font-bold mb-3">Seller Request</h1>
 
       <div className="flex fex-col justify-between items-center mb-5 p-4 bg-[#39a290] rounded-md">
         <div className="w-full p-4 bg-[#39a290] rounded-md">
           <SetParPage setParPage={setParPage} />
-          <Table headers={headers} rows={rows} iconbgColor = "bg-green-600 hover:bg-green-500 text-black"/>
+          <Table
+            headers={headers}
+            rows={rows}
+            iconbgColor="bg-green-600 hover:bg-green-500 text-black"
+            routerPage={(no) => `/admin/dashboard/seller/details/${no}`}
+          />
           <div className=" w-full flex justify-end items-center mt-5">
-          <Pagination
-                setCurrentPage={setCurrentPage}
-                currentPage={currentPage}
-                totalItem={50}
-                parPage={parPage}
-                showItem={3}
-              />
+            <Pagination
+              setCurrentPage={setCurrentPage}
+              currentPage={currentPage}
+              totalItem={50}
+              parPage={parPage}
+              showItem={3}
+            />
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Table = ({ headers, rows, iconbgColor, icon2bgColor }) => {
+const Table = ({ headers, rows, iconbgColor, icon2bgColor, routerPage }) => {
   return (
     <div className="relative ">
       <table className="w-full text-sm text-[#d0d2d6] text-center">
@@ -76,8 +76,13 @@ const Table = ({ headers, rows, iconbgColor, icon2bgColor }) => {
                   <div className="mx-auto">
                     <p
                       className={` ${iconbgColor} flex items-center justify-center  rounded-full w-8 h-8 mx-auto`}
-                    >
+                    > {
+                      routerPage ? 
+                      <Link to={routerPage(row.no)} name={row.name} className="">{row.icon1}</Link>
+                      :
                       <Link className="">{row.icon1}</Link>
+
+                    }
                     </p>
                   </div>
                 </td>
