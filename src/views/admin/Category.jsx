@@ -131,7 +131,7 @@ const Category = () => {
                   />
 
                   <div>
-                    <button className="bg-[#134d49] w-full hover:shadow-[#8ae1db] hover:shadow-md text-white rounded-md py-2 my-2">
+                    <button className="bg-[#277367] w-full hover:shadow-[#71b5b0] hover:shadow-md text-white rounded-md py-2 my-2">
                       Add Category
                     </button>
                   </div>

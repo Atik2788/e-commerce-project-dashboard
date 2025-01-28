@@ -7,3 +7,17 @@
 ### npm i react-router-dom
 ### npm start
 
+
+## Some basic color:
+btn= bg-[#134d49]
+hover:bg (Like btn)= bg-[#134d49]
+website background= bg-[#8ae1db]
+header, page bg= bg-[#39a290]
+message bg= bg-[#205c74]
+message active section bg= bg-[#287999]
+
+border(as website background)= border-[#8ae1db]
+focus:border-[#287999]
+
+text ofwhite= text-[#d0d2d6]
+
