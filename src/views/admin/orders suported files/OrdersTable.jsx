@@ -2,7 +2,7 @@ import React from "react";
 import { FaArrowAltCircleDown } from "react-icons/fa";
 import OrdersTableSubOrder from "./OrdersTableSubOrder";
 
-const OrdersTable = ({ show, setShow }) => {
+const OrdersTable = ({ show,routerPage,  setShow }) => {
   return (
     <div className="relative mt-5 overflow-x-auto">
       <div className="w-full text-sm text-left">
@@ -20,10 +20,10 @@ const OrdersTable = ({ show, setShow }) => {
           </div>
         </div>
  
-        <OrdersTableSubOrder show={show}  setShow={setShow}/>    
-        <OrdersTableSubOrder show={show}  setShow={setShow}/>    
-        <OrdersTableSubOrder show={show}  setShow={setShow}/>    
-        <OrdersTableSubOrder show={show}  setShow={setShow}/>    
+        <OrdersTableSubOrder routerPage={routerPage} show={show}  setShow={setShow}/>    
+        <OrdersTableSubOrder routerPage={routerPage} show={show}  setShow={setShow}/>    
+        <OrdersTableSubOrder routerPage={routerPage} show={show}  setShow={setShow}/>    
+        <OrdersTableSubOrder routerPage={routerPage} show={show}  setShow={setShow}/>    
 
 
       </div>

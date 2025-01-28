@@ -1,6 +1,6 @@
 import React from "react";
 
-const SellerDetails = ({name}) => {
+const SellerDetails = () => {
   return (
     <div className="px-2 lg:px-7 pt-5">
       <h1 className="text-[20px] font-bold mb-3">Seller Details</h1>

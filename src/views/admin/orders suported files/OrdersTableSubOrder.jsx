@@ -1,7 +1,7 @@
 import { FaArrowAltCircleDown } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
-const OrdersTableSubOrder = ({setShow, show}) => {
+const OrdersTableSubOrder = ({setShow, routerPage, show}) => {
     return (
         <div className="text-[#d0d2d6]">
           <div className="flex justify-between items-start border-b border-slate-700">
@@ -18,7 +18,7 @@ const OrdersTableSubOrder = ({setShow, show}) => {
               Pending
             </div>
             <div className="py-3 w-[18%] font-medium whitespace-nowrap">
-              <Link>View</Link>
+              <Link to={routerPage(3)}>View</Link>
             </div>
             <div
               onClick={(e) => setShow(!show)}

@@ -80,7 +80,7 @@ const ChatRightPart = ({sellerId, setShow, show}) => {
                             placeholder='Input Your Message' 
                             className='w-full flex justify-between px-2 border border-[#8ae1db] items-center py-[5px] focus:border-[#287999] rounded-md outline-none bg-transparent text-[#d0d2d6]' />
 
-                            <button className="bg-[#134d49] w-[150px] hover:shadow-[#8ae1db] hover:shadow-md text-white rounded-md py-2">
+                            <button className="bg-[#277367] w-[150px] hover:shadow-[#8ae1db] hover:shadow-md text-white rounded-md py-2">
                             Send
                             </button>
                         </form>

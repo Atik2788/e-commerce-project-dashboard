@@ -15,7 +15,7 @@ const Orders = () => {
           <SetParPage setParPage={setParPage} />
 
           {/* table */}
-          <OrdersTable show={show} setShow={setShow} />
+          <OrdersTable show={show} routerPage={(id) => `/admin/dashboard/order/details/${id}`} setShow={setShow} />
 
           <div className="w-full flex justify-end mt-4 bottom-4 right-4">
             <Pagination

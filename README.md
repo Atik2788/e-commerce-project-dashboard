@@ -9,8 +9,8 @@
 
 
 ## Some basic color:
-btn= bg-[#134d49]
-hover:bg (Like btn)= bg-[#134d49]
+btn= bg-[#277367]
+hover:bg (Like btn)= bg-[#277367]
 website background= bg-[#8ae1db]
 header, page bg= bg-[#39a290]
 message bg= bg-[#205c74]
