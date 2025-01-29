@@ -15,6 +15,7 @@ website background= bg-[#8ae1db]
 header, page bg= bg-[#39a290]
 message bg= bg-[#205c74]
 message active section bg= bg-[#287999]
+hover bg = bg-[#42bca8]
 
 border(as website background)= border-[#8ae1db]
 focus:border-[#287999]

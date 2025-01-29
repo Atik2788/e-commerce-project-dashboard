@@ -1,4 +1,5 @@
 import React from "react";
+import OrderDetailsImgSec from "./orders suported files/OrderDetailsImgSec";
 
 const OrderDetails = () => {
   return (
@@ -20,16 +21,36 @@ const OrderDetails = () => {
                 <h2>#34698</h2>
                 <span>3 March 2025</span>                
             </div>
+
             <div className="flex flex-wrap">
                 <div className="w-[30%]">
                     <div className="pr-3 text-[#d0d2d6] text-lg">
                         <div className="flex flex-col gap-1">
                             <h2 className="pb-2 font-semibold">Deliver To: Raju Khan</h2>
+                            <p><span className="text-sm">21, Kola Baga, Dhaka</span></p>
                         </div>
+                        
+                        <div className="flex justify-start items-center gap-3">
+                            <h2>Payment Status:</h2>
+                            <span className="text-base">Paid</span>
+                        </div>
+
+                        <span>Price: $215</span>
+                        
+                        {/* product img section start */}
+                        <OrderDetailsImgSec qunatity={3}/>
+                        <OrderDetailsImgSec qunatity={5}/>
+                        <OrderDetailsImgSec qunatity={1}/>
+                        {/* product img section end */}
+
                     </div>
                 </div>
             </div>
+
+
+
         </div>
+
 
       </div>
     </div>
