@@ -22,9 +22,9 @@ const OrderDetails = () => {
                 <span>3 March 2025</span>                
             </div>
 
-            <div className="flex flex-wrap">
-                <div className="w-[30%]">
-                    <div className="pr-3 text-[#d0d2d6] text-lg">
+            <div className="md:flex flex-wrap ">
+                <div className="md:w-[30%]">
+                    <div className="md:pr-3 text-[#d0d2d6] text-lg">
                         <div className="flex flex-col gap-1">
                             <h2 className="pb-2 font-semibold">Deliver To: Raju Khan</h2>
                             <p><span className="text-sm">21, Kola Baga, Dhaka</span></p>
@@ -38,13 +38,31 @@ const OrderDetails = () => {
                         <span>Price: $215</span>
                         
                         {/* product img section start */}
-                        <OrderDetailsImgSec qunatity={3}/>
-                        <OrderDetailsImgSec qunatity={5}/>
-                        <OrderDetailsImgSec qunatity={1}/>
+                        <OrderDetailsImgSec productName="Product Name Here" brand="Easy" qunatity={3}/>
+                        <OrderDetailsImgSec productName="Product Name Here" brand="Easy" qunatity={5}/>
+                        <OrderDetailsImgSec productName="Product Name Here" brand="Easy" qunatity={1}/>
                         {/* product img section end */}
 
                     </div>
                 </div>
+
+                <div className="md:w-[70%] md:px-10">
+                    <div className="">
+                        <div className="mt-4 flex flex-col bg-[#42bca8] rounded-md p-4">
+                            <div className="text-[#d0d2d6]">
+                                <div className="flex justify-start itc
+                                 gap-3">
+                                    <h2>Selelr 1 Order: </h2>
+                                    <span>pending</span>
+                                 </div>
+                                 <OrderDetailsImgSec productName="Product Name Here" brand="Easy" qunatity={1}/>
+                                 <OrderDetailsImgSec productName="Product Name Here" brand="Easy" qunatity={5}/>
+                                 <OrderDetailsImgSec productName="Product Name Here" brand="Saloon" qunatity={2}/> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
 
