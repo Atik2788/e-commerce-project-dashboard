@@ -3,6 +3,33 @@ import { Link } from 'react-router-dom';
 
 const AddProduct = () => {
 
+    const categoriys = [
+        {
+            id: 1,
+            nme: 'Sports'
+        },
+        {
+            id: 2,
+            nme: 'Tshirt'
+        },
+        {
+            id: 3,
+            nme: 'Mobile'
+        },
+        {
+            id: 4,
+            nme: 'Watch'
+        },
+        {
+            id: 5,
+            nme: 'Computer'
+        },
+        {
+            id: 6,
+            nme: 'Pant'
+        },
+    ]
+
     const [state, setState] = useState({
         name: "",
         description: "",
@@ -18,6 +45,15 @@ const AddProduct = () => {
             ...state,
             [e.target.name] : e.target.value
         })
+    }
+
+    const [cateShow, setCateShow] = useState(false);
+    const [category, setCategory] = useState("");
+    const [allCategory, setAllCategory]= useState([]);
+    const [searchValue, setsSearchValue]= useState('');
+
+    const categorySearch = (e) =>{
+        const value = e.target.value
     }
 
 
@@ -66,14 +102,17 @@ const AddProduct = () => {
                             {/* first product name in a row */}
                             <div className="flex flex-col w-full gap-1 relative">
                                 <label htmlFor="category">Category</label>
-                                <input 
+                                <input
+                                readOnly onClick={() => setCateShow(!cateShow)} 
                                 onChange={inputHandle} 
-                                value={state.name} type="text" name='name' id='name' placeholder='Product Name'
+                                value={state.name} type="text" name='category' id='category' placeholder='Category'
                                 className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#8ae1db] rounded-md text-[#39a290]'
                                 />
                                 <div className={`absolute top-[101%] bg-slate-800 w-full transition-all ${cateShow ? "scale-100" : "scale-0"}`}>
                                     <div className="w-full px-4 py-2 fixed">
-                                        <input className='px-3 py-1 focus:border-indigo-500 outline-none bg-transparent border border-slate-700 rounded-md text-[#d0d2d6] overflow-hidden' type="text" placeholder='Search' />
+                                        <input 
+                                        onChange={categorySearch}
+                                        className='px-3 py-1 w-full focus:border-indigo-500 outline-none bg-transparent border border-slate-700 rounded-md text-[#d0d2d6] overflow-hidden' type="text" placeholder='Search' />
                                     </div>
                                     <div className="pt-14"></div>
                                     <div className="flex justify-start items-start flex-col h-[200px] overflow-x-scroll">
@@ -81,7 +120,7 @@ const AddProduct = () => {
                                             allCategory.map((c, i) => <span onClick={() => {
                                                 setCateShow(false)
                                                 setCategory(c.name)
-                                                TbSettingsSearchValue("")
+                                                setsSearchValue("")
                                                 setAllCategory(category)
                                             }}>{c.name}</span>)
                                         }
