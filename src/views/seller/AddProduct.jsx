@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { FaRegImages } from "react-icons/fa6";
 
 const AddProduct = () => {
 
@@ -64,6 +65,19 @@ const AddProduct = () => {
             setAllCategory(categorys)
         }
     }
+
+
+    const [images, setImages] = useState([]);
+    const [imageShow, setImageShow] = useState([])
+    const imageHandle = (e) =>{
+        const files = e.target.files;
+        const length = files.length;
+
+        if(length > 0){
+            setImages([...images, ...files])
+        }
+    }
+    console.log('images', images);
 
 
     return (
@@ -159,41 +173,6 @@ const AddProduct = () => {
                         </div>
                          {/* second product row end */}
 
-
-                        {/* 3rd product row start */}
-                        <div className="flex flex-col mb-3 md:flex-row gap-4 w-full text-[#d0d2d6]">
-
-                            {/* price name section */}
-                            <div className="flex flex-col w-full gap-1 ">
-                                <label htmlFor="price">Price</label>
-                                <input 
-                                onChange={inputHandle} 
-                                value={state.price} 
-                                type="number" 
-                                name='price' 
-                                id='price' 
-                                placeholder='Price'
-                                className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#8ae1db] rounded-md text-[#39a290]'
-                                />
-                            </div>
-
-                            {/* discount section */}
-                            <div className="flex flex-col w-full gap-1 ">
-                                <label htmlFor="discount">Discount</label>
-                                <input 
-                                onChange={inputHandle} 
-                                value={state.brand} 
-                                type="number" 
-                                name='discount' 
-                                id='discount' 
-                                placeholder='Discount by %'
-                                className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#8ae1db] rounded-md text-[#39a290]'
-                                />
-                            </div>                         
-
-                        </div>
-                         {/* 3rd product row end */}
-
                          {/* 3rd product row start */}
                         <div className="flex flex-col mb-3 md:flex-row gap-4 w-full text-[#d0d2d6]">
 
@@ -232,7 +211,7 @@ const AddProduct = () => {
 
 
                          {/* description product row start */}
-                        <div className="flex flex-col mb-3 md:flex-row gap-4 w-full text-[#d0d2d6]">
+                        <div className="flex flex-col mb-5 md:flex-row gap-4 w-full text-[#d0d2d6]">
                             {/* discount section */}
                             <div className="flex flex-col w-full gap-1 ">
                                 <label htmlFor="description">Description</label>
@@ -250,6 +229,18 @@ const AddProduct = () => {
                             </div>
                         </div>
                         {/* description product row end */}
+
+
+                        {/*product img row start */}
+                        <div className="grid lg:grid-cols-4 grid-cols-1 md:grid-cols-3 sm:grid-cols-2 sm:gap-4 md:gap-4 gap-3 w-full text-[#d0d2d6] mb-4" >
+                            <label className='flex justify-center items-center flex-col h-[180px] cursor-pointer border border-dashed hover:border-[#8ae1db] w-full text-[#d0d2d6]' htmlFor="image">
+                                <span ><FaRegImages className='w-5 h-5'/></span>
+                                <span>Select Image</span>
+                            </label>
+                            <input className='hidden' onChange={imageHandle} multiple type="file" id='image' />
+                        </div>
+                        {/*product img row end */}
+
 
                     </form>
                 </div>
