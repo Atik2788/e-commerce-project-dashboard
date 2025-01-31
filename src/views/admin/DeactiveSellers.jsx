@@ -1,52 +1,15 @@
 import React, { useState } from "react";
-import SetParPage from "./commonPages/SetParPage";
-import Table from "./commonPages/Table";
-import Pagination from "./commonPages/Pagination";
-import { FaRegEye } from "react-icons/fa";
+import { headers2, rows2 } from "../../api/headersAndRows";
+import Table from "../commonPages/Table";
+import SetParPage from "../commonPages/SetParPage";
+import Pagination from "../commonPages/Pagination";
 
 const DeactiveSellers = () => {
   const [currentPage, setCurrentPage] = useState(1);
+    const [searchValue, setSearchValue] = useState("");
   const [parPage, setParPage] = useState(5);
 
-  const headers = ["No", "Image", "Name", "Email", "Payment Status", "Status", "Action"];
-  const rows = [
-    {
-      no: 1,
-      image: "http://localhost:3000/images/category/1.jpg", // Placeholder image
-      name: "Shoo",
-      paymentStatus: "Active",
-      email: "demo@gmail.com",
-      status: "Deactive",
-      icon1: <FaRegEye />
-    },
-    {
-      no: 2,
-      image: "http://localhost:3000/images/category/2.jpg", // Placeholder image
-      name: "Watch",
-      email: "demo@gmail.com",
-      paymentStatus: "Active",
-      status: "Deactive",
-      icon1: <FaRegEye />
-    },
-    {
-      no: 3,
-      image: "http://localhost:3000/images/category/3.jpg", // Placeholder image
-      name: "Cloth",
-      email: "demo@gmail.com",
-      paymentStatus: "Active",
-      status: "Deactive",
-      icon1: <FaRegEye />
-    },
-    {
-      no: 4,
-      image: "http://localhost:3000/images/category/4.jpg", // Placeholder image
-      name: "Bag",
-      email: "demo@gmail.com",
-      paymentStatus: "Active",
-      status: "Deactive",
-      icon1: <FaRegEye />
-    },
-  ];
+
 
   return (
     <div className="px-2 lg:px-7 pt-5">
@@ -54,8 +17,8 @@ const DeactiveSellers = () => {
 
       <div className="flex fex-col justify-between items-center mb-5 p-4 bg-[#39a290] rounded-md">
         <div className="w-full p-4 bg-[#39a290] rounded-md">
-          <SetParPage setParPage={setParPage} />
-          <Table headers={headers} rows={rows} iconbgColor = "bg-green-600 hover:bg-green-500 text-black"/>
+          <SetParPage setParPage={setParPage} searchValue={searchValue} setSearchValue={setSearchValue}/>
+          <Table headers={headers2} rows={rows2} iconbgColor = "bg-green-600 hover:bg-green-500 text-black"/>
           <div className=" w-full flex justify-end items-center mt-5">
           <Pagination
                 setCurrentPage={setCurrentPage}

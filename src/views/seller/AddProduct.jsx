@@ -120,7 +120,7 @@ const AddProduct = () => {
                 <div className="flex justify-between items-center pb-4">
                     <h1 className='text-[#d0d2d6] text-xl font-semibold'>Add Product                        
                     </h1>
-                    <Link className='bg-[#277367] rounded-sm px-7 py-2 my-2 hover:shadow-[#71b5b0] hover:shadow-lg text-white'>All Product</Link>
+                    <Link to='/seller/dashboard/product' className='bg-[#277367] rounded-sm px-7 py-2 my-2 hover:shadow-[#71b5b0] hover:shadow-lg text-white'>All Product</Link>
                 </div>
                 {/* page hedder end*/}
 

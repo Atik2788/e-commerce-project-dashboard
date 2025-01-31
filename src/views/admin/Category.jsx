@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import SetParPage from "./commonPages/SetParPage";
-import Pagination from "./commonPages/Pagination";
-import AdminDashboardTable from "./admin suported files/AdminDashboardTable";
-import { FaEdit, FaRegTrashAlt } from "react-icons/fa";
-import Table from "./commonPages/Table";
 import { FaImages } from "react-icons/fa6";
 import { IoCloseSharp } from "react-icons/io5";
+import { headers, rows } from "../../api/headersAndRows";
+import Table from "../commonPages/Table";
+import SetParPage from "../commonPages/SetParPage";
+import Pagination from "../commonPages/Pagination";
 
 const Category = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -13,38 +12,7 @@ const Category = () => {
   const [parPage, setParPage] = useState(5);
   const [show, setShow] = useState(false);
 
-  const headers = ["No", "Image", "Name", "Action"];
-  const rows = [
-    {
-      no: 1,
-      image: "http://localhost:3000/images/category/1.jpg", // Placeholder image
-      name: "Shoo",
-      icon1: <FaEdit className="text-black" />,
-      icon2: <FaRegTrashAlt className="text-black" />
-    },
-    {
-      no: 2,
-      image: "http://localhost:3000/images/category/2.jpg", // Placeholder image
-      name: "Watch",
-      icon1: <FaEdit className="text-black" />,
-      icon2: <FaRegTrashAlt className="text-black" />
-    },
-    {
-      no: 3,
-      image: "http://localhost:3000/images/category/3.jpg", // Placeholder image
-      name: "Cloth",
-      icon1: <FaEdit className="text-black" />,
-      icon2: <FaRegTrashAlt className="text-black" />
-    },
-    {
-      no: 4,
-      image: "http://localhost:3000/images/category/4.jpg", // Placeholder image
-      name: "Bag",
-      icon1: <FaEdit className="text-black" />,
-      icon2: <FaRegTrashAlt className="text-black" />
-    },
-  ];
-
+  
   return (
     <div className="px-2 lg:px-7 pt-5">
 
@@ -63,7 +31,7 @@ const Category = () => {
         {/* left side div */}
         <div className="w-full lg:w-7/12">
           <div className="w-full p-4 bg-[#39a290] rounded-md">
-            <SetParPage setParPage={setParPage} />
+            <SetParPage setParPage={setParPage} searchValue={searchValue} setSearchValue={setSearchValue}/>
 
             <Table headers={headers} rows={rows} iconbgColor="bg-yellow-500 hover:bg-yellow-300" icon2bgColor="bg-red-500 hover:bg-red-300"/>
 

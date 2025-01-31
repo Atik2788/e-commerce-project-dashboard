@@ -1,7 +1,7 @@
 import { useState } from "react";
-import SetParPage from "./commonPages/SetParPage";
 import OrdersTable from "./orders suported files/OrdersTable";
-import Pagination from "./commonPages/Pagination";
+import SetParPage from "../commonPages/SetParPage";
+import Pagination from "../commonPages/Pagination";
 
 const Orders = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -12,10 +12,10 @@ const Orders = () => {
   return (
       <div className="px-2 lg:px-7 pt-5">
         <div className="w-full p-4 bg-[#39a290] rounded-md ">
-          <SetParPage setParPage={setParPage} />
+          <SetParPage setParPage={setParPage} setSearchValue={setSearchValue}/>
 
           {/* table */}
-          <OrdersTable show={show} routerPage={(id) => `/admin/dashboard/order/details/${id}`} setShow={setShow} />
+          <OrdersTable show={show} searchValue={searchValue} routerPage={(id) => `/admin/dashboard/order/details/${id}`} setShow={setShow} />
 
           <div className="w-full flex justify-end mt-4 bottom-4 right-4">
             <Pagination
