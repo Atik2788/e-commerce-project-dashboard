@@ -11,8 +11,10 @@
 ## Some basic color:
 btn= bg-[#277367]
 hover:bg (Like btn)= bg-[#277367]
+
 website background= bg-[#8ae1db]
 header, page bg= bg-[#39a290]
+
 message bg= bg-[#205c74]
 message active section bg= bg-[#287999]
 hover bg = bg-[#42bca8]

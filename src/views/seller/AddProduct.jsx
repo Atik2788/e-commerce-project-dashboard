@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaRegImages } from "react-icons/fa6";
+import { MdClose } from "react-icons/md";
 
 const AddProduct = () => {
 
@@ -99,6 +100,15 @@ const AddProduct = () => {
             setImages([...tempImages])
             }
         }
+
+        const removeImage = (i) =>{
+            const filterImage = images.filter((img, index) => index !== i)
+            const filterImageUrl = imageShow.filter((img, index) => index !== i)
+
+            setImages(filterImage);
+            setImageShow(filterImageUrl)
+
+        } 
     
 
 
@@ -263,16 +273,24 @@ const AddProduct = () => {
                                         <img className='h-full w-full rounded-sm' src={img.url} alt="" />
                                     </label>
                                     <input onChange={(e) => changeImage(e.target.files[0], i)} type="file" id={i} className='hidden'  />
+                                    <span onClick={()=>removeImage(i)} className="p-2 z-10 cursor-pointer hover:shadow-lg bg-[#39a29096] hover:bg-[#39a290]  hover:text-red-500 text-white absolute top-1 right-1 rounded-full" ><MdClose /></span>
                                 </div>)
                             }
 
-                            <label className='flex justify-center items-center flex-col h-[180px] cursor-pointer border border-dashed hover:border-[#8ae1db] w-full text-[#d0d2d6]' htmlFor="image">
+                            <label className='flex justify-center items-center flex-col h-[180px] cursor-pointer border border-dashed hover:border-[#8ae1db] w-full text-[#d0d2d6]' htmlFor="image"> 
                                 <span ><FaRegImages className='w-5 h-5'/></span>
                                 <span>Select Image</span>
                             </label>
+                            
                             <input className='hidden' onChange={imageHandle} multiple type="file" id='image' />
                         </div>
                         {/*product img row end */}
+
+                        <div className='flex'>
+                            <button className="bg-[#277367] w-[150px] hover:shadow-[#8ae1db] hover:shadow-md text-white rounded-md py-2">
+                                Add Product
+                            </button>
+                        </div>
 
 
                     </form>
