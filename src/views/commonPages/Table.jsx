@@ -60,6 +60,7 @@ const Table = ({ headers, rows, iconbgColor, icon2bgColor, routerPage, icon3bgCo
               {row.status && <td className="">{row.status}</td>}
               {row.division && <td className="">{row.division}</td>}
               {row.district && <td className="">{row.district}</td>}
+              {row.orderStatus && <td className="">{row.orderStatus}</td>}
 
               <td className="">
                 <div className={`flex gap-1 ${row.icon3 ? 'w-30' : "w-20"} mx-auto`}>

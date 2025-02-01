@@ -2,6 +2,7 @@ import { FaEdit, FaRegTrashAlt, FaRegEye } from "react-icons/fa";
 
 export const headers = ["No", "Image", "Name", "Action"];
 export const headers2 = ["No", "Image", "Name", "Email", "Payment Status", "Status", "Action"];
+export const headersOrders = ["Order Id", "Price", "Payment Status", "Order Status", "Action"];
 export const headersSellerProducts = ["No", "Image", "Name", "Category", "Barand", "Price", "Discount", "Stock", "Action"];
 
 export  const rows = [
@@ -127,5 +128,36 @@ export  const rows = [
         icon1: <FaEdit className="text-black" />,
         icon2: <FaRegEye />,
         icon3: <FaRegTrashAlt className="text-black" />,
+      },
+    ];
+
+    export  const rowsSellerOrders = [
+      {
+        no: '#5516',
+        price: "$246",
+        paymentStatus: "Pending",
+        orderStatus: "Pending",
+        icon2: <FaRegEye />,
+      },
+      {
+        no:  '#551556',
+        price: "$526",
+        paymentStatus: "Pending",
+        orderStatus: "Pending",
+        icon2: <FaRegEye />,
+      },
+      {
+        no:  '#1416',
+        price: "$95",
+        paymentStatus: "Pending",
+        orderStatus: "Pending",
+        icon2: <FaRegEye />,
+      },
+      {
+        no:  '#69516',
+        price: "$206",
+        paymentStatus: "Pending",
+        orderStatus: "Pending",
+        icon2: <FaRegEye />,
       },
     ];
