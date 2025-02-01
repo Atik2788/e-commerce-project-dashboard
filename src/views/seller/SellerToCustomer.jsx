@@ -17,7 +17,7 @@ const SellerToCustomer = () => {
 
                         <div className="w-full h-[calc(100vh-177px)] bg-[#287999] md:bg-transparent overflow-auto rounded-md">
                             <div className="flex text-xl justify-between items-center p-4 md:p-0 md:px-3 md:pb-3 text-white">
-                                <h2>Sellers</h2>
+                                <h2>Customers</h2>
                                 <span onClick={() => setShow(false)} className='block cursor-pointer md:hidden'><AiOutlineClose /></span>
                             </div>
 
@@ -28,9 +28,9 @@ const SellerToCustomer = () => {
                         </div>
                     </div>
 
-                    {/* chat right part / chat container div */}
+                    <div className="w-full md:w-[calc(100%-200px)] md:pl-4">
                     <ChatRightPart sellerId={sellerId} setShow={setShow} show={show}/>
-
+                    </div>
 
                 </div>
             </div>

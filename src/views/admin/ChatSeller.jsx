@@ -28,9 +28,9 @@ const ChatSeller = () => {
                         </div>
                     </div>
 
-                    {/* chat right part / chat container div */}
-                    <ChatRightPart sellerId={sellerId} setShow={setShow} show={show}/>
-
+                    <div className="w-full md:w-[calc(100%-200px)] md:pl-4">
+                        <ChatRightPart sellerId={sellerId} setShow={setShow} show={show}/>
+                    </div>
 
                 </div>
             </div>

@@ -47,7 +47,7 @@ export const sellerRoutes = [
         ability: ["active", 'deactive']
     },
     {
-        path: '/selle r/dashboard/payments',
+        path: '/seller/dashboard/payments',
         element: <Payments/>,
         roel: 'seller',
         status: 'active'
