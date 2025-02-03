@@ -9,6 +9,7 @@ const Orders = lazy(() => import('../../views/seller/Orders'))
 const Payments = lazy(() => import('../../views/seller/Payments'))
 const SellerToCustomer = lazy(() => import('../../views/seller/SellerToCustomer'))
 const SellerToAdmin = lazy(() => import('../../views/seller/SellerToAdmin'))
+const Profile = lazy(() => import('../../views/seller/Profile'))
 
 
 export const sellerRoutes = [
@@ -20,7 +21,7 @@ export const sellerRoutes = [
     {
         path: '/seller/dashboard',
         element: <SellerDashboard/>,
-        roel: 'seller',
+        role: 'seller',
         status: 'active'
     },
     {
@@ -31,43 +32,50 @@ export const sellerRoutes = [
     {
         path: '/seller/dashboard/product',
         element: <Products/>,
-        roel: 'seller',
+        role: 'seller',
         status: 'active'
     },
     {
         path: '/seller/dashboard/discount-product',
         element: <DiscountProducts/>,
-        roel: 'seller',
+        role: 'seller',
         status: 'active'
     },
     {
         path: '/seller/dashboard/orders',
         element: <Orders/>,
-        roel: 'seller',
+        role: 'seller',
         ability: ["active", 'deactive']
     },
     {
         path: '/seller/dashboard/payments',
         element: <Payments/>,
-        roel: 'seller',
+        role: 'seller',
         status: 'active'
     },
     {
         path: '/seller/dashboard/chat-customer/:customerId',
         element: <SellerToCustomer/>,
-        roel: 'seller',
+        role: 'seller',
         status: 'active'
     },
     {
         path: '/seller/dashboard/chat-customer',
         element: <SellerToCustomer/>,
-        roel: 'seller',
+        role: 'seller',
         status: 'active'
     },
     {
         path: '/seller/dashboard/chat-support',
         element: <SellerToAdmin/>,
+        role: 'seller',
         status: ["active", 'deactive', 'pending']
+    },
+    {
+        path: '/seller/dashboard/profile',
+        element: <Profile/>,
+        role: 'seller',
+        status: ["active"]
     },
 ]
 

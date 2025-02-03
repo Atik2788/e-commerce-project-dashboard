@@ -22,5 +22,5 @@ hover bg = bg-[#42bca8]
 border(as website background)= border-[#8ae1db]
 focus:border-[#287999]
 
-text ofwhite= text-[#d0d2d6]
+text ofwhite= 
 
