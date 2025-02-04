@@ -1,6 +1,7 @@
 import React from "react";
 import { FaImages } from "react-icons/fa6";
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
+import { FaRegEdit } from "react-icons/fa";
 
 const Profile = () => {
 
@@ -12,6 +13,7 @@ const Profile = () => {
       <div className="w-full flex flex-wrap">
         <div className="w-full md:w-6/12 ">
             <div className="w-full p-4 bg-[#39a290] rounded-md text-[#d0d2d6]">
+                {/* img section start */}
                 <div className="flex justify-center items-center py-3">
                     {image ? 
                      <label htmlFor="img" className="h-[150px] w-[200px] relative p-3 cursor-pointer overflow-hidden">
@@ -39,6 +41,43 @@ const Profile = () => {
                     }
                     <input type="file" className="hidden" id="img" />
                 </div>
+                {/* img section start */}
+
+                {/* profile details section start */}
+                <div className="px-0 md:px-5 py-2">
+                    <div className="flex justify-between text-sm flex-col gap-2 p-4 bg-slate-800 rounded-md relative">
+                        <span className="p-[6px] bg-yellow-500 rounded hover:shadow-lg hover:shadow-yellow-500/50 absolute right-2 top-2 cursor-pointer"><FaRegEdit />
+                        </span>
+
+                        <div className="flex gap-2">
+                            <span className="font-semibold">Name : </span>
+                            <span>Mahin Khan</span>
+                        </div>
+
+                        <div className="flex gap-2">
+                            <span className="font-semibold">Email : </span>
+                            <span>mahin@gmail.com</span>
+                        </div>
+
+                        <div className="flex gap-2">
+                            <span className="font-semibold">Role : </span>
+                            <span>Seller</span>
+                        </div>
+
+                        <div className="flex gap-2">
+                            <span className="font-semibold">Status : </span>
+                            <span>Active</span>
+                        </div>
+
+                        <div className="flex gap-2">
+                            <span className="font-semibold">Payment Account : </span>
+                            <span>Pending</span>
+                        </div>
+
+                    </div>
+                </div>
+                 {/* profile details section end */}
+
             </div>
         </div>
 
