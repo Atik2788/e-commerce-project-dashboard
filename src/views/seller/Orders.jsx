@@ -22,6 +22,7 @@ const Orders = () => {
         <Table headers={headersOrders} rows={rowsSellerOrders} iconbgColor="bg-yellow-500 hover:bg-yellow-300" 
         icon2bgColor="bg-green-700 hover:bg-green-600"
         icon3bgColor="bg-red-500 hover:bg-red-300"
+        routerPage={(orderId) => `/seller/dashboard/order/details/${orderId}`}
         />
 
         <div className="w-full flex justify-end mt-4 bottom-4 right-4">
