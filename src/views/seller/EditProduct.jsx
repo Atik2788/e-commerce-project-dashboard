@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaRegImages } from "react-icons/fa6";
 import { MdClose } from "react-icons/md";
@@ -69,46 +69,34 @@ const EditProduct = () => {
 
 
     const [images, setImages] = useState([]);
-    const [imageShow, setImageShow] = useState([])
-    const imageHandle = (e) =>{
-        const files = e.target.files;
-        const length = files.length;
+    const [imageShow, setImageShow] = useState([]);
 
-        if(length > 0){
-            setImages([...images, ...files])
-
-            let imgUrl = []
-            for (let i = 0; i < length; i++){
-                imgUrl.push({url: URL.createObjectURL(files[i])})
-            }
-            setImageShow([...imageShow, ...imgUrl])
-        }
-    }
     // console.log('images', images);
     // console.log('imageShow', imageShow);
 
-    const changeImage = (img, index) =>{
-        if(img){
-            let tempImages = images;
-            let tempUrl = imageShow;
-
-            tempImages[index] = img;
-            tempUrl[index] = {url: URL.createObjectURL(img)}
-
-            
-            setImageShow([...tempUrl])
-            setImages([...tempImages])
+    const changeImage = (img, files) =>{
+            if(files.length > 0){
+                
             }
         }
 
-        const removeImage = (i) =>{
-            const filterImage = images.filter((img, index) => index !== i)
-            const filterImageUrl = imageShow.filter((img, index) => index !== i)
 
-            setImages(filterImage);
-            setImageShow(filterImageUrl)
-
-        } 
+        useEffect(() =>{
+            setState({
+                name: "Mens Tshirt",
+                description: "Soft and breathable men's t-shirt made from 100% cotton. Features a classic fit, ribbed crew neck, and durable stitching. Perfect for casual wear, offering all-day comfort and effortless style.",
+                discount: 10,
+                price: "225",
+                brand: "Easy",
+                stock: 10
+            })
+            setCategory('Tshirt');
+            setImageShow([
+                'http://localhost:3000/images/admin.jpeg',
+                'http://localhost:3000/images/seller.jpg',
+                'http://localhost:3000/images/demo.jpg',
+            ])
+        }, [])
     
 
 
@@ -136,7 +124,7 @@ const EditProduct = () => {
                                 <input 
                                 onChange={inputHandle} 
                                 value={state.name} type="text" name='name' id='name' placeholder='Product Name'
-                                className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#8ae1db] rounded-md text-[#39a290]'
+                                className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#8ae1db] rounded-md text-black'
                                 />
                             </div>
                             {/* brand section */}
@@ -145,7 +133,7 @@ const EditProduct = () => {
                                 <input 
                                 onChange={inputHandle} 
                                 value={state.brand} type="text" name='brand' id='brand' placeholder='Brand Name'
-                                className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#8ae1db] rounded-md text-[#39a290]'
+                                className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#8ae1db] rounded-md text-black'
                                 />
                             </div>
 
@@ -163,7 +151,7 @@ const EditProduct = () => {
                                 readOnly onClick={() => setCateShow(!cateShow)} 
                                 onChange={inputHandle} 
                                 value={category} type="text" name='category' id='category' placeholder='-- select category--'
-                                className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#8ae1db] rounded-md text-[#39a290]'
+                                className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#8ae1db] rounded-md text-black'
                                 />
                                 <div className={`absolute top-[101%] bg-[#277367] w-full transition-all ${cateShow ? "scale-100" : "scale-0"}`}>
                                     <div className="w-full px-4 py-2 fixed">
@@ -198,7 +186,7 @@ const EditProduct = () => {
                                 <input 
                                 onChange={inputHandle} 
                                 value={state.stock} type="text" name='stock' id='stock' placeholder='Stock'
-                                className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#8ae1db] rounded-md text-[#39a290]'
+                                className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#8ae1db] rounded-md text-black'
                                 />
                             </div> 
                             {/* stock section end*/}                           
@@ -218,7 +206,7 @@ const EditProduct = () => {
                                 name='price' 
                                 id='price' 
                                 placeholder='Price'
-                                className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#8ae1db] rounded-md text-[#39a290]'
+                                className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#8ae1db] rounded-md text-black'
                                 />
                             </div>
 
@@ -232,7 +220,7 @@ const EditProduct = () => {
                                 name='discount' 
                                 id='discount' 
                                 placeholder='Discount by %'
-                                className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#8ae1db] rounded-md text-[#39a290]'
+                                className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#8ae1db] rounded-md text-black'
                                 />
                             </div>
 
@@ -256,7 +244,7 @@ const EditProduct = () => {
                                 cols={10}
                                 rows={4}
                                 placeholder='Description'
-                                className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#8ae1db] rounded-md text-[#39a290]'
+                                className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#8ae1db] rounded-md text-black'
                                 ></textarea>
                             </div>
                         </div>
@@ -266,23 +254,14 @@ const EditProduct = () => {
                         {/*product img row start */}
                         <div className="grid lg:grid-cols-4 grid-cols-1 md:grid-cols-3 sm:grid-cols-2 sm:gap-4 md:gap-4 gap-3 w-full text-[#d0d2d6] mb-4" >
                             
-                            {
-                                imageShow.map((img, i) =>
-                                <div key={i} className='h-48 relative'>
-                                    <label htmlFor={i}>
-                                        <img className='h-full w-full rounded-sm' src={img.url} alt="" />
-                                    </label>
-                                    <input onChange={(e) => changeImage(e.target.files[0], i)} type="file" id={i} className='hidden'  />
-                                    <span onClick={()=>removeImage(i)} className="p-2 z-10 cursor-pointer hover:shadow-lg bg-[#39a29096] hover:bg-[#39a290]  hover:text-red-500 text-white absolute top-1 right-1 rounded-full" ><MdClose /></span>
-                                </div>)
-                            }
-
-                            <label className='flex justify-center items-center flex-col h-[180px] cursor-pointer border border-dashed hover:border-[#8ae1db] w-full text-[#d0d2d6]' htmlFor="image"> 
-                                <span ><FaRegImages className='w-5 h-5'/></span>
-                                <span>Select Image</span>
-                            </label>
-                            
-                            <input className='hidden' onChange={imageHandle} multiple type="file" id='image' />
+                           {
+                            imageShow.map((img, i) => <div>
+                                <label htmlFor={i}>
+                                    <img src={img} alt="" />
+                                </label>
+                                <input onChange={(e) => changeImage(img, e.target.files)} type="file" id={i}  className='hidden'/>
+                            </div>)
+                           }
                         </div>
                         {/*product img row end */}
 
