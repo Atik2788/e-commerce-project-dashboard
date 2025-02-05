@@ -14,7 +14,7 @@ const DiscountProducts = () => {
 
     return (
         <div className="px-2 lg:px-7 pt-5">
-        <h1 className="text-black mb-3 font-semibold text-lg">Orders</h1>
+        <h1 className="text-black mb-3 font-semibold text-lg">Discount Products</h1>
   
         <div className="w-full p-4 bg-[#39a290] rounded-md ">
           <SetParPage setParPage={setParPage} searchValue={searchValue} setSearchValue={setSearchValue}/>

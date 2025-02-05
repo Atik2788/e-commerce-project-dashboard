@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Table = ({ headers, rows, iconbgColor, icon2bgColor, routerPage, icon3bgColor }) => {
+const Table = ({ headers, rows, iconbgColor, icon2bgColor, routerPage, icon3bgColor, editPage }) => {
+  console.log(routerPage);
+  console.log(editPage);
   return (
     <div className="relative ">
       <table className="w-full text-sm text-[#d0d2d6] text-center">
@@ -70,6 +72,10 @@ const Table = ({ headers, rows, iconbgColor, icon2bgColor, routerPage, icon3bgCo
                         <Link to={routerPage(row.no)} name={row.name} className="">
                           {row.icon1}
                         </Link>
+                      ) : editPage ? (
+                        <Link to={editPage(row.no)} name={row.name} className="">
+                          {row.icon1}
+                        </Link>
                       ) : (
                         <Link className="">{row.icon1}</Link>
                       )}
@@ -85,6 +91,7 @@ const Table = ({ headers, rows, iconbgColor, icon2bgColor, routerPage, icon3bgCo
                       ) : (
                         <Link className="">{row.icon2}</Link>
                       )}
+
                     </p>
                   )}
 
