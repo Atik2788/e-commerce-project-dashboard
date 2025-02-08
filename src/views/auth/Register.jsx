@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import {Link} from "react-router-dom"
 import { FaFacebook, FaGoogle } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import { PropagateLoader } from "react-spinners";
 
 const Register = () => {
+
+  const {loader} = useSelector(state => state.auth)
 
   const [state, setState] = useState({
     name: "",
@@ -20,6 +24,14 @@ const Register = () => {
   const submit = (e) =>{
     e.preventDefault()
     console.log(state);
+  }
+
+  const overrideStyle = {
+    display: "flex",
+     margin: "0 auto",
+     height: "24px",
+     justifyContent: "center",
+     alignItem: "center"
   }
 
   return (
@@ -83,7 +95,11 @@ const Register = () => {
               </label>
             </div>
 
-            <button className="bg-slate-600 w-full hover:shadow-slate-700/50 hover:shadow-lg text-white rounded-md px-7 py-2 mb-3">Sign Up</button>
+            <button disabled = {loader ? true : false} className="w-full bg-[#8ae1db] text-[#ffffff] hover:bg-[#6fd2cf] rounded-md px-5 py-3 transition-all duration-200 transform hover:scale-105">
+              {
+                loader ? <PropagateLoader color="#fff " cssOverride={overrideStyle}/> : 'Sign Up'
+              }
+            </button>
 
             <div className="flex items-center mb-3 gap-3 justify-center">
                 <p>Already have an account? <Link to="/login" className="font-bold text-slate-600">Sign In</Link> </p>

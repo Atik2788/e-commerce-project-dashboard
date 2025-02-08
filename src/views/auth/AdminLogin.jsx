@@ -112,6 +112,7 @@ const AdminLogin = () => {
                 loader ? <PropagateLoader color="#fff " cssOverride={overrideStyle}/> : 'Log In'
               }
             </button>
+            
           </form>
         </div>
       </div>
