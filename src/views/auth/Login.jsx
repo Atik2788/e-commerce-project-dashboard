@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { PropagateLoader } from "react-spinners";
 import { overrideStyle } from "../../utils/utils";
 import { useDispatch, useSelector } from "react-redux";
+import { messageClear, seller_login } from "../../store/Reducers/authReducer";
+import toast from "react-hot-toast";
 
 const Login = () => {
+
   const navigate = useNavigate()
   const dispatch = useDispatch();
-  const {loader, errorMessage, successMessage} = useSelector(state=>state.auth)
+  const {loader, successMessage,errorMessage} = useSelector(state => state.auth)
 
     const [state, setState] = useState({
       email: "",
@@ -24,8 +27,23 @@ const Login = () => {
   
     const submit = (e) =>{
       e.preventDefault()
-      console.log(state);
+          dispatch(seller_login (state))
+          // console.log('done use eff');
     }
+
+    useEffect(() => {
+      if(successMessage){
+        toast.success(successMessage)
+        dispatch(messageClear())
+        navigate('/')   
+      } 
+      if (errorMessage) {
+        toast.error(errorMessage)
+        dispatch(messageClear())
+    }
+  
+    }, [successMessage,errorMessage])
+  
   
 
 
