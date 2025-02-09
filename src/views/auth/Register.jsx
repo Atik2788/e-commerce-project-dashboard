@@ -1,12 +1,19 @@
-import React, { useState } from "react";
-import {Link} from "react-router-dom"
+import React, { useEffect, useState } from "react";
+import {Link, useNavigate} from "react-router-dom"
 import { FaFacebook, FaGoogle } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { PropagateLoader } from "react-spinners";
+import { overrideStyle } from "../../utils/utils";
+import {messageClear, seller_register} from '../../store/Reducers/authReducer'
+import toast from "react-hot-toast";
 
 const Register = () => {
 
-  const {loader} = useSelector(state => state.auth)
+  const navigate = useNavigate()
+
+  const dispatch = useDispatch();
+
+  const {loader, successMessage,errorMessage} = useSelector(state => state.auth)
 
   const [state, setState] = useState({
     name: "",
@@ -23,16 +30,25 @@ const Register = () => {
 
   const submit = (e) =>{
     e.preventDefault()
-    console.log(state);
+    dispatch(seller_register(state))
+    // console.log(state);
   }
 
-  const overrideStyle = {
-    display: "flex",
-     margin: "0 auto",
-     height: "24px",
-     justifyContent: "center",
-     alignItem: "center"
+  useEffect(() => {
+    if(successMessage){
+      toast.success(successMessage)
+      dispatch(messageClear())
+      navigate('/')  
+    } 
+    if (errorMessage) {
+      toast.error(errorMessage)
+      dispatch(messageClear())
   }
+
+  }, [successMessage,errorMessage])
+
+
+
 
   return (
     <div className="min-w-screen min-h-screen bg-[#8ae1db] flex justify-center items-center">
