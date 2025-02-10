@@ -34,7 +34,7 @@ const Login = () => {
     useEffect(() => {
       if(successMessage){
         toast.success(successMessage)
-        dispatch(messageClear())
+        // dispatch(messageClear())
         navigate('/')   
       } 
       if (errorMessage) {
