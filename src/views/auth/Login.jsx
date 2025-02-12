@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { PropagateLoader } from "react-spinners";
 import { overrideStyle } from "../../utils/utils";
 import { useDispatch, useSelector } from "react-redux";
-import { messageClear, seller_login } from "../../store/Reducers/authReducer";
+import { get_user_info, messageClear, seller_login } from "../../store/Reducers/authReducer";
 import toast from "react-hot-toast";
 
 const Login = () => {
@@ -34,9 +34,9 @@ const Login = () => {
     useEffect(() => {
       if(successMessage){
         toast.success(successMessage)
-        // dispatch(messageClear())
-        navigate('/')   
-      } 
+        dispatch(get_user_info())
+        navigate('/') 
+      }
       if (errorMessage) {
         toast.error(errorMessage)
         dispatch(messageClear())

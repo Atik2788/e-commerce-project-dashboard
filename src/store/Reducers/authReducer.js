@@ -86,6 +86,10 @@ const returnRole = (token) =>{
 }
 
 
+const initialUserInfo = localStorage.getItem("userInfo")
+  ? JSON.parse(localStorage.getItem("userInfo"))
+  : "";
+
 
 export const authReducer = createSlice({
   name: "auth",
@@ -93,9 +97,11 @@ export const authReducer = createSlice({
     successMessage: "",
     errorMessage: "",
     loader: false,
-    userInfo: "",
-    role: returnRole(localStorage.getItem('accessToken')),
-    token: localStorage.getItem('accessToken')
+    // userInfo: "",
+    // role: returnRole(localStorage.getItem('accessToken')),
+    // token: localStorage.getItem('accessToken')
+    userInfo: initialUserInfo, // ✅ Load from localStorage
+    role: returnRole(localStorage.getItem("accessToken")),
   },
   reducers: {
     messageClear: (state, _) => {
@@ -117,7 +123,28 @@ export const authReducer = createSlice({
         state.successMessage = payload.message; 
         state.token = payload.token; 
         state.role = returnRole(payload.token); 
+        state.userInfo = payload.userInfo;  // ✅ Updates userInfo
+        localStorage.setItem("userInfo", JSON.stringify(payload.userInfo)); // ✅ Save user info in local storage
       })
+      // set the user info in local storage, bcs. ProtectRoutes.jsx need user info, If I dont store it in local storage then it remove user info after every relod.
+
+      // when i logout then I need to clerar locl storage
+      /*
+
+        export const logout = createAsyncThunk("auth/logout", async () => {
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("role");
+        localStorage.removeItem("userInfo");
+        return true;
+      });
+
+      builder.addCase(logout.fulfilled, (state) => {
+        state.token = null;
+        state.userInfo = "";
+        state.role = "";
+      });
+
+      */
 
 
       .addCase(seller_register.pending, (state, { payload }) => {
@@ -136,6 +163,8 @@ export const authReducer = createSlice({
       .addCase(get_user_info.fulfilled, (state, { payload }) => {
         state.loader = false;
         state.userInfo = payload.userInfo; 
+
+        localStorage.setItem("userInfo", JSON.stringify(payload.userInfo)); // ✅ Save user info
       })
 
 
@@ -151,6 +180,8 @@ export const authReducer = createSlice({
         state.successMessage = payload.message; 
         state.token = payload.token; 
         state.role = returnRole(payload.token); 
+        state.userInfo = payload.userInfo;  // ✅ Updates userInfo
+        localStorage.setItem("userInfo", JSON.stringify(payload.userInfo)); // ✅ Save user info
       })
   },
 });
