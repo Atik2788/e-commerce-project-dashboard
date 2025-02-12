@@ -22,7 +22,8 @@ const ProtectRoute = ({ route, children }) => {
                 }
               } else {
                 if (route.visibility) {
-                  if (route.visibility.some((r) => r === userInfo.status)) {
+                    // Here all route.visibility mapping and find which visibility is matching with userinfo.status, like active, pending, deactive etc. if "userInfo === pending" then user only showing "route.visibility === pending".
+                  if (route.visibility.some((r) => r === userInfo.status)) { 
                     return <Suspense fallback={null}>{children}</Suspense>;
                   } else {
                     return <Navigate to="/seller/account-pending" replace />;
