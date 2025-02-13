@@ -12,6 +12,10 @@ const Category = () => {
   const [parPage, setParPage] = useState(5);
   const [show, setShow] = useState(false);
 
+  const [state, setState] = useState({
+    name: '',
+    image: ''
+  })
   
   return (
     <div className="px-2 lg:px-7 pt-5">
@@ -73,6 +77,7 @@ const Category = () => {
                 <div className="flex flex-col w-full gap-1 mb-3">
                   <label htmlFor="">Category Name</label>
                   <input
+                  onChange={(e) => setState({...state, name: e.target.value})}
                     className="px-4 py-2 focus:border-indigo-500 outline-none bg-[#f9fbfb] rounded-md text-[#39a290]"
                     type="text"
                     id="name"
