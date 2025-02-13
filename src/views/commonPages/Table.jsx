@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Table = ({ headers, rows, iconbgColor, icon2bgColor, routerPage, icon3bgColor, editPage }) => {
   console.log(routerPage);
-  console.log(editPage);
+  // console.log(editPage);
   return (
     <div className="relative ">
       <table className="w-full text-sm text-[#d0d2d6] text-center">

@@ -6,7 +6,7 @@ export const getRoutes = () =>{
 
     privateRoutes.map((r) => {
         r.element = <ProtectRoute route={r}>{r.element}</ProtectRoute>
-        console.log(r);
+        // console.log(r);
     })
 
     return{
