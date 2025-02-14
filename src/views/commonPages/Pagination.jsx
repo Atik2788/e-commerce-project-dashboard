@@ -28,7 +28,7 @@ const Pagination = ({currentPage, setCurrentPage, totalItem, parPage, showItem})
     }
 
     return (
-        <ul className='flex gap-3'>
+        <ul  className='flex gap-3'>
             {
                 currentPage > 1 && 
                 <li onClick={() =>setCurrentPage(currentPage - 1) } className="w-[33px] h-[33px] rounded-full flex justify-center items-center bg-slate-600 text-[#d0d2d6] cursor-pointer">

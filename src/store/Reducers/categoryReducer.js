@@ -12,7 +12,7 @@ export const categoryAdd = createAsyncThunk(
       const { data } = await api.post("/category-add", formData, {
         withCredentials: true,  
       });
-      console.log(data);
+      // console.log(data);
       return fulfillWithValue(data);
     } catch (error) {
       // console.log(error.response.data.error);
@@ -45,12 +45,11 @@ export const categoryReducer = createSlice({
         state.loader = false;
         state.errorMessage = payload.error;
       })
-    //   .addCase(admin_login.fulfilled, (state, { payload }) => {
-    //     state.loader = false;
-    //     state.successMessage = payload.message;
-    //     state.token = payload.token;
-    //     state.role = returnRole(payload.token);
-    //   })
+      .addCase(categoryAdd.fulfilled, (state, { payload }) => {
+        state.loader = false;
+        state.successMessage = payload.message;
+        state.categorys = [...state.categorys, payload.category]
+      })
   },
 });
 

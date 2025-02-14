@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaImages } from "react-icons/fa6";
 import { IoCloseSharp } from "react-icons/io5";
 import { headers, rows } from "../../api/headersAndRows";
@@ -7,13 +7,15 @@ import SetParPage from "../commonPages/SetParPage";
 import Pagination from "../commonPages/Pagination";
 import { PropagateLoader } from 'react-spinners';
 import { overrideStyle } from './../../utils/utils';
-import { categoryAdd } from "../../store/Reducers/categoryReducer";
+import { categoryAdd, messageClear } from "../../store/Reducers/categoryReducer";
 import { useDispatch, useSelector } from "react-redux";
+import toast from "react-hot-toast";
+import { NavigationType } from "react-router-dom";
 
 const Category = () => {
 
-  const disPatch = useDispatch();
-  const {loader} = useSelector(state =>state.category)
+  const dispatch = useDispatch();
+  const {loader, successMessage, errorMessage} = useSelector(state =>state.category)
 
   // const categoryState = useSelector(state => state.category);
   // console.log(categoryState); 
@@ -43,8 +45,28 @@ const Category = () => {
   const add_category = (e) =>{
     e.preventDefault()
     // console.log(state);
-    disPatch(categoryAdd(state))
+    dispatch(categoryAdd(state))
   }
+
+  useEffect(() => {
+    if(successMessage){
+      toast.success(successMessage)
+      dispatch(messageClear())
+      setState({
+        name: '',
+        image: ''
+      })
+      setImage('')
+
+    }
+    if (errorMessage) {
+      toast.error(errorMessage)
+      dispatch(messageClear())
+  }
+
+  }, [successMessage,errorMessage])
+
+   
 
   
   return (
