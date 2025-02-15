@@ -1,13 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaRegImages } from "react-icons/fa6";
 import { MdClose } from "react-icons/md";
 import { useDispatch, useSelector } from 'react-redux';
+import { get_category } from '../../store/Reducers/categoryReducer';
+import { add_product } from './../../store/Reducers/productReducer';
 
 const AddProduct = () => {
 
     const dispatch = useDispatch();
     const {categorys} = useSelector(state => state.category)
+
+    useEffect(() =>{
+        dispatch(get_category({
+            page: '',
+            searchValue: '',
+            parPage: ''
+        }))
+    }, [dispatch])
 
 
     const [state, setState] = useState({
@@ -29,7 +39,7 @@ const AddProduct = () => {
 
     const [cateShow, setCateShow] = useState(false);
     const [category, setCategory] = useState("");
-    const [allCategory, setAllCategory]= useState(categorys);
+    const [allCategory, setAllCategory]= useState([]);
     const [searchValue, setSearchValue]= useState('');
     console.log(searchValue);
 
@@ -44,7 +54,6 @@ const AddProduct = () => {
             setAllCategory(categorys)
         }
     }
-
 
     const [images, setImages] = useState([]);
     const [imageShow, setImageShow] = useState([])
@@ -90,9 +99,33 @@ const AddProduct = () => {
 
         const add = (e) =>{
             e.preventDefault()
+            const formData = new FormData();
+            formData.append('name', state.name)
+            formData.append('description', state.description)
+            formData.append('price', state.price)
+            formData.append('brand', state.brand)
+            formData.append('stock', state.stock)
+            formData.append('discount', state.discount)
+            formData.append('shopName', 'EasyShop')
+            formData.append('name', state.name)
+            formData.append('category', category)
 
+            for(let i = 0; i < images.length; i++){
+                formData.append('images', images[i])
+            }
+            dispatch(add_product(formData))
         }
-    
+
+        
+    useEffect(() =>{
+        // setAllCategory(categorys)
+           
+    const uniqueCategories = [...new Map(categorys.map(c => [c.name.toLowerCase(), c])).values()];
+    setAllCategory(uniqueCategories);
+
+    },[categorys])
+
+ 
 
 
     return (
@@ -156,7 +189,7 @@ const AddProduct = () => {
                                         className='px-3 py-1 w-full focus:border-[#8ae1db] outline-none bg-transparent border border-slate-700 rounded-md text-[#d0d2d6] overflow-hidden' type="text" placeholder='Search' />
                                     </div>
                                     <div className="pt-14"></div>
-                                    <div className="flex justify-start items-start flex-col h-[200px] ">
+                                    <div className="flex justify-start items-start flex-col max-h-[200px] overflow-auto">
                                         {
                                             allCategory.map((c, i) => <span 
                                             key={i}

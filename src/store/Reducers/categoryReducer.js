@@ -70,7 +70,7 @@ export const categoryReducer = createSlice({
       .addCase(categoryAdd.fulfilled, (state, { payload }) => {
         state.loader = false;
         state.successMessage = payload.message;
-        state.categorys = [...state.categorys, payload.category]
+        state.categorys = [...state.categorys, payload.categorys]
       })
 
       .addCase(get_category.fulfilled, (state, { payload }) => {

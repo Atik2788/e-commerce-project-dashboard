@@ -3,16 +3,13 @@ import api from "../../api/api";
 
 export const add_product = createAsyncThunk(
   "product/add_product",
-  async ({ name, image }, { rejectWithValue, fulfillWithValue }) => {
-    console.log(name, image);
+  async ({ product }, { rejectWithValue, fulfillWithValue }) => {
+    // console.log(name, image);
     try {
-        const formData = new FormData();
-        formData.append('name', name)
-        formData.append('image', image)
-      const { data } = await api.post("/category-add", formData, {
-        withCredentials: true,  
-      });
-      // console.log(data);
+        
+      const { data } = await api.post("/product-add", product, {
+        withCredentials: true});
+      console.log(data);
       return fulfillWithValue(data);
     } catch (error) {
       // console.log(error.response.data.error);
