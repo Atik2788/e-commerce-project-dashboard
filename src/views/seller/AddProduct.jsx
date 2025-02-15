@@ -2,35 +2,13 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaRegImages } from "react-icons/fa6";
 import { MdClose } from "react-icons/md";
+import { useDispatch, useSelector } from 'react-redux';
 
 const AddProduct = () => {
 
-    const categorys = [
-        {
-            id: 1,
-            name: 'Sports'
-        },
-        {
-            id: 2,
-            name: 'Tshirt'
-        },
-        {
-            id: 3,
-            name: 'Mobile'
-        },
-        {
-            id: 4,
-            name: 'Watch'
-        },
-        {
-            id: 5,
-            name: 'Computer'
-        },
-        {
-            id: 6,
-            name: 'Pant'
-        }
-    ]
+    const dispatch = useDispatch();
+    const {categorys} = useSelector(state => state.category)
+
 
     const [state, setState] = useState({
         name: "",
@@ -109,6 +87,11 @@ const AddProduct = () => {
             setImageShow(filterImageUrl)
 
         } 
+
+        const add = (e) =>{
+            e.preventDefault()
+
+        }
     
 
 
@@ -126,7 +109,7 @@ const AddProduct = () => {
 
                 {/* product add form start */}
                 <div className="">
-                    <form className=''>
+                    <form onSubmit={add} className=''>
 
                         {/* first product row start */}
                         <div className="flex flex-col mb-3 md:flex-row gap-4 w-full text-[#d0d2d6]">

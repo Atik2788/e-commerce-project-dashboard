@@ -19,7 +19,7 @@ const Pagination = ({currentPage, setCurrentPage, totalItem, parPage, showItem})
         const btns = [];
         for(let i = startPage; i <= endPage; i++ ){
             btns.push(
-                <li onClick={() => setCurrentPage(i)} className={`${currentPage === i ? "bg-[#8ae1db] shadow-lg shadow-[#6db0ac] text-[#b7b9be]" : "bg-slate-600 hover:bg-[#8ae1db] shadow-lg hover:shadow-[#6db0ac] text-[#d0d2d6] hover:text-[#b7b9be]"} w-[33px] h-[33px] rounded-full flex justify-center items-center cursor-pointer`}>
+                <li key={i} onClick={() => setCurrentPage(i)} className={`${currentPage === i ? "bg-[#8ae1db] shadow-lg shadow-[#6db0ac] text-[#b7b9be]" : "bg-slate-600 hover:bg-[#8ae1db] shadow-lg hover:shadow-[#6db0ac] text-[#d0d2d6] hover:text-[#b7b9be]"} w-[33px] h-[33px] rounded-full flex justify-center items-center cursor-pointer`}>
                     {i}
                 </li>
             )
@@ -28,7 +28,7 @@ const Pagination = ({currentPage, setCurrentPage, totalItem, parPage, showItem})
     }
 
     return (
-        <ul  className='flex gap-3'>
+        <ul className='flex gap-3'>
             {
                 currentPage > 1 && 
                 <li onClick={() =>setCurrentPage(currentPage - 1) } className="w-[33px] h-[33px] rounded-full flex justify-center items-center bg-slate-600 text-[#d0d2d6] cursor-pointer">

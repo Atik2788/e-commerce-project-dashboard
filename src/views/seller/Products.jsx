@@ -22,7 +22,7 @@ const Products = () => {
         <Table headers={headersSellerProducts} rows={rowsSellerProducts} iconbgColor="bg-yellow-500 hover:bg-yellow-300" 
         icon2bgColor="bg-green-700 hover:bg-green-600"
         icon3bgColor="bg-red-500 hover:bg-red-300"            
-        editPage={(productId) => `/seller/dashboard/edit-product/${productId}`}      
+        editPage={(productId) => `/seller/dashboard/edit-product/${productId}`}       
         />
 
         <div className="w-full flex justify-end mt-4 bottom-4 right-4">
