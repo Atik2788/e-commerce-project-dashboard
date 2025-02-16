@@ -41,7 +41,7 @@ const AddProduct = () => {
     const [category, setCategory] = useState("");
     const [allCategory, setAllCategory]= useState([]);
     const [searchValue, setSearchValue]= useState('');
-    console.log(searchValue);
+    // console.log(searchValue);
 
     const categorySearch = (e) =>{
         const value = e.target.value
@@ -99,6 +99,7 @@ const AddProduct = () => {
 
         const add = (e) =>{
             e.preventDefault()
+
             const formData = new FormData();
             formData.append('name', state.name)
             formData.append('description', state.description)
@@ -107,12 +108,12 @@ const AddProduct = () => {
             formData.append('stock', state.stock)
             formData.append('discount', state.discount)
             formData.append('shopName', 'EasyShop')
-            formData.append('name', state.name)
             formData.append('category', category)
 
             for(let i = 0; i < images.length; i++){
                 formData.append('images', images[i])
             }
+            console.log(formData);
             dispatch(add_product(formData))
         }
 

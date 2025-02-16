@@ -18,7 +18,7 @@ export const add_product = createAsyncThunk(
   }
 );
 //************** */ End add_product  method ***********
-
+ 
 
 export const get_product = createAsyncThunk(
   "category/get_product",
