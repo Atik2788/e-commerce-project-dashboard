@@ -100,7 +100,7 @@ const AddProduct = () => {
         const add = (e) =>{
             e.preventDefault()
 
-            const formData = new FormData();
+            const formData = new FormData()
             formData.append('name', state.name)
             formData.append('description', state.description)
             formData.append('price', state.price)
@@ -113,7 +113,8 @@ const AddProduct = () => {
             for(let i = 0; i < images.length; i++){
                 formData.append('images', images[i])
             }
-            console.log(formData);
+
+            //    console.log(formData);
             dispatch(add_product(formData))
         }
 

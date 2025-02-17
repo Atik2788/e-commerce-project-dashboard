@@ -3,8 +3,9 @@ import api from "../../api/api";
 
 export const add_product = createAsyncThunk(
   "product/add_product",
-  async ({ product }, { rejectWithValue, fulfillWithValue }) => {
+  async (product, { rejectWithValue, fulfillWithValue }) => {
     // console.log(name, image);
+    // *** here I faced a problem, when I use >>({ product }, { rejectWithValue, fulfillWithValue }) << {} bracket in product then my backend dont get product data.****
     try {
         
       const { data } = await api.post("/product-add", product, {
@@ -68,7 +69,7 @@ export const productReducer = createSlice({
       .addCase(add_product.fulfilled, (state, { payload }) => {
         state.loader = false;
         state.successMessage = payload.message;
-        state.products = [...state.products, payload.category]
+        state.products = [...state.products, payload.products]
       })
 
       .addCase(get_product.fulfilled, (state, { payload }) => {
