@@ -5,6 +5,8 @@ import { headersSellerProducts, rowsSellerProducts } from "../../api/headersAndR
 import Pagination from "../commonPages/Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import { get_products } from "../../store/Reducers/productReducer";
+import TableNew from "../commonPages/TableNew";
+import { FaEdit, FaRegTrashAlt, FaRegEye } from "react-icons/fa";
 
 const Products = () => {
 
@@ -34,10 +36,24 @@ const Products = () => {
       <div className="w-full p-4 bg-[#39a290] rounded-md ">
         <SetParPage setParPage={setParPage} searchValue={searchValue} setSearchValue={setSearchValue}/>
 
-        <Table headers={headersSellerProducts} rows={rowsSellerProducts} iconbgColor="bg-yellow-500 hover:bg-yellow-300" 
+        {/* <Table headers={headersSellerProducts} rows={products} iconbgColor="bg-yellow-500 hover:bg-yellow-300" 
         icon2bgColor="bg-green-700 hover:bg-green-600"
         icon3bgColor="bg-red-500 hover:bg-red-300"            
         editPage={(productId) => `/seller/dashboard/edit-product/${productId}`}       
+        /> */}
+
+        <TableNew
+          headers={headersSellerProducts} 
+          rows={products.map(product => ({
+            ...product,
+            editIcon: <FaEdit className="text-black" />,
+            viewIcon: <FaRegEye />,
+            deleteIcon: <FaRegTrashAlt className="text-black" />
+          }))} 
+          iconbgColor="bg-yellow-500 hover:bg-yellow-300" 
+          icon2bgColor="bg-green-700 hover:bg-green-600" 
+          icon3bgColor="bg-red-500 hover:bg-red-300"
+          editPage={(productId) => `/seller/dashboard/edit-product/${productId}`} 
         />
 
         <div className="w-full flex justify-end mt-4 bottom-4 right-4">

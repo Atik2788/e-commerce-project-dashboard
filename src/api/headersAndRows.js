@@ -11,7 +11,7 @@ export  const rows = [
         image: "http://localhost:3000/images/category/1.jpg", // Placeholder image
         name: "Shoo",
         icon1: <FaEdit className="text-black" />,
-        icon2: <FaRegTrashAlt className="text-black" />
+        viewIcon: <FaRegTrashAlt className="text-black" />
       },
       {
         no: 2,

@@ -1,9 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Table = ({ headers, rows, iconbgColor, icon2bgColor, routerPage, icon3bgColor, editPage }) => {
+const TableNew = ({
+  headers,
+  rows,
+  iconbgColor,
+  icon2bgColor,
+  routerPage,
+  icon3bgColor,
+  editPage,
+}) => {
   // console.log(routerPage);
   // console.log(editPage);
+  console.log(rows);
   return (
     <div className="relative ">
       <table className="w-full text-sm text-[#d0d2d6] text-center">
@@ -26,11 +35,11 @@ const Table = ({ headers, rows, iconbgColor, icon2bgColor, routerPage, icon3bgCo
               key={index}
               className="hover:bg-[#43b3a0] justify-center items-center border-b border-gray-400 h-[40px]"
             >
-              {row.no ? <td className="">{row.no}</td>
-              :
-              <td className="">{index+1}</td>
-            }
-              
+              {row.no ? (
+                <td className="">{row.no}</td>
+              ) : (
+                <td className="">{index + 1}</td>
+              )}
 
               {row.image && (
                 <td className="whitespace-nowrap flex justify-center items-center py-2 ">
@@ -76,12 +85,31 @@ const Table = ({ headers, rows, iconbgColor, icon2bgColor, routerPage, icon3bgCo
                 </td>
               )}
 
-              {row.name && <td className="">{row.name}</td>}
+              {row.name && (
+                <td className="">
+                  {row.name.length > 15
+                    ? row.name.slice(0, 15) + "..."
+                    : row.name}
+                </td>
+              )}
+              {/* {row.name && (<td className="">{row.name.length > 15 ? row.name.slice(0, 15) + "..." : row.name}</td>)} */}
               {/* {row.shopName && <td className="">{row.shopName}</td>} */}
               {row.category && <td className="">{row.category}</td>}
               {row.brand && <td className="">{row.brand}</td>}
-              {row.price && <td className="">{row.price}</td>}
-              {row.discount && <td className="">{row.discount}</td>}
+              {row.price && <td className="">${row.price}</td>}
+              {row.discount !== undefined && row.discount !== null && (
+                <td className="">
+                  {row.discount === 0 ? (
+                    <span>No Discount</span>
+                  ) : (
+                    `${row.discount}%`
+                  )}
+                </td>
+              )}
+              {/* {row.discount === 0 ? <span>No Discount</span>
+                : <span>${row.discount}</span>  
+            } */}
+              {/* {row.discount && <td className="">{row.discount}%</td>} */}
               {row.stock && <td className="">{row.stock}</td>}
               {row.email && <td className="">{row.email}</td>}
               {row.paymentStatus && <td className="">{row.paymentStatus}</td>}
@@ -91,53 +119,74 @@ const Table = ({ headers, rows, iconbgColor, icon2bgColor, routerPage, icon3bgCo
               {row.orderStatus && <td className="">{row.orderStatus}</td>}
 
               <td className="">
-                <div className={`flex gap-1 ${row.icon3 ? 'w-30' : "w-20"} mx-auto`}>
-                  {row.icon1 && (
-                    <p className={`${iconbgColor} flex items-center justify-center rounded-full w-8 h-8 mx-auto`}>
+                <div
+                  className={`flex gap-1 ${
+                    row.deleteIcon ? "w-30" : "w-20"
+                  } mx-auto`}
+                >
+                  {row.editIcon && (
+                    <p
+                      className={`${iconbgColor} flex items-center justify-center rounded-full w-8 h-8 mx-auto`}
+                    >
                       {routerPage ? (
-                        <Link to={routerPage(row.no)} name={row.name} className="">
-                          {row.icon1}
+                        <Link
+                          to={routerPage(row.no)}
+                          name={row.name}
+                          className=""
+                        >
+                          {row.editIcon}
                         </Link>
                       ) : editPage ? (
-                        <Link to={editPage(row.no)} name={row.name} className="">
-                          {row.icon1}
+                        <Link
+                          to={editPage(row.no)}
+                          name={row.name}
+                          className=""
+                        >
+                          {row.editIcon}
                         </Link>
                       ) : (
-                        <Link className="">{row.icon1}</Link>
+                        <Link className="">{row.editIcon}</Link>
                       )}
                     </p>
                   )}
-                  
-                  {row.icon2 && (
-                    <p className={`${icon2bgColor} flex items-center justify-center rounded-full w-8 h-8 mx-auto`}>
+
+                  {row.viewIcon && (
+                    <p
+                      className={`${icon2bgColor} flex items-center justify-center rounded-full w-8 h-8 mx-auto`}
+                    >
                       {routerPage ? (
-                        <Link to={routerPage(row.no)} name={row.name} className="">
-                          {row.icon2}
+                        <Link
+                          to={routerPage(row.no)}
+                          name={row.name}
+                          className=""
+                        >
+                          {row.viewIcon}
                         </Link>
                       ) : (
-                        <Link className="">{row.icon2}</Link>
+                        <Link className="">{row.viewIcon}</Link>
                       )}
-
                     </p>
                   )}
 
-                  {row.icon3 && (
-                    <p className={`${icon3bgColor} flex items-center justify-center rounded-full w-8 h-8 mx-auto`}>
+                  {row.deleteIcon && (
+                    <p
+                      className={`${icon3bgColor} flex items-center justify-center rounded-full w-8 h-8 mx-auto`}
+                    >
                       {routerPage ? (
-                        <Link to={routerPage(row.no)} name={row.name} className="">
-                          {row.icon3}
+                        <Link
+                          to={routerPage(row.no)}
+                          name={row.name}
+                          className=""
+                        >
+                          {row.deleteIcon}
                         </Link>
                       ) : (
-                        <Link className="">{row.icon3}</Link>
+                        <Link className="">{row.deleteIcon}</Link>
                       )}
                     </p>
                   )}
                 </div>
               </td>
-
-
-              
-
             </tr>
           ))}
         </tbody>
@@ -146,4 +195,4 @@ const Table = ({ headers, rows, iconbgColor, icon2bgColor, routerPage, icon3bgCo
   );
 };
 
-export default Table;
+export default TableNew;
