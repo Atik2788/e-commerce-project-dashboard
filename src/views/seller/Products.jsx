@@ -1,15 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SetParPage from "../commonPages/SetParPage";
 import Table from "../commonPages/Table";
 import { headersSellerProducts, rowsSellerProducts } from "../../api/headersAndRows";
 import Pagination from "../commonPages/Pagination";
+import { useDispatch, useSelector } from "react-redux";
+import { get_products } from "../../store/Reducers/productReducer";
 
 const Products = () => {
+
+    const dispatch = useDispatch();
+    const { products, totalProduct } = useSelector((state) => state.product);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [searchValue, setSearchValue] = useState("");
   const [parPage, setParPage] = useState(5);
   const [show, setShow] = useState(false);
+
+
+    useEffect(() => {
+      const obj = {
+        parPage: parseInt(parPage),
+        page: parseInt(currentPage),
+        searchValue,
+      };
+      dispatch(get_products(obj));
+    }, [searchValue, currentPage, parPage]);
     
 
   return (

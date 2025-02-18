@@ -3,13 +3,17 @@ import { Link } from 'react-router-dom';
 import { FaRegImages } from "react-icons/fa6";
 import { MdClose } from "react-icons/md";
 import { useDispatch, useSelector } from 'react-redux';
-import { get_category } from '../../store/Reducers/categoryReducer';
+import { get_category, messageClear } from '../../store/Reducers/categoryReducer';
 import { add_product } from './../../store/Reducers/productReducer';
+import { PropagateLoader } from 'react-spinners';
+import { overrideStyle } from "./../../utils/utils";
+import toast from 'react-hot-toast';
 
 const AddProduct = () => {
 
     const dispatch = useDispatch();
     const {categorys} = useSelector(state => state.category)
+      const {loader, successMessage, errorMessage} = useSelector((state) => state.product);
 
     useEffect(() =>{
         dispatch(get_category({
@@ -120,12 +124,35 @@ const AddProduct = () => {
 
         
     useEffect(() =>{
-        // setAllCategory(categorys)
-           
+    // get unique categories,           
     const uniqueCategories = [...new Map(categorys.map(c => [c.name.toLowerCase(), c])).values()];
     setAllCategory(uniqueCategories);
 
     },[categorys])
+
+
+
+    useEffect(() => {
+        if (successMessage) {
+          toast.success(successMessage);
+          dispatch(messageClear());
+          setState({
+            name: "",
+            description: "",
+            discount: "",
+            price: "",
+            brand: "",
+            stock: ""
+          });
+          setImageShow([]);
+          setImages([])
+          setCategory('');
+        }
+        if (errorMessage) {
+          toast.error(errorMessage);
+          dispatch(messageClear());
+        }
+      }, [successMessage, errorMessage]);
 
  
 
@@ -305,9 +332,19 @@ const AddProduct = () => {
                         {/*product img row end */}
 
                         <div className='flex'>
-                            <button className="bg-[#277367] w-[150px] hover:shadow-[#8ae1db] hover:shadow-md text-white rounded-md py-2">
-                                Add Product
-                            </button>
+                        <button
+                      sisabled={loader ? true : false}
+                      className="bg-[#277367] w-[250px] hover:shadow-[#71b5b0] hover:shadow-md text-white rounded-md py-2 my-2"
+                    >
+                      {loader ? (
+                        <PropagateLoader
+                          color="#fff"
+                          cssOverride={overrideStyle}
+                        />
+                      ) : (
+                        "Add Product"
+                      )}
+                    </button>
                         </div>
 
 
