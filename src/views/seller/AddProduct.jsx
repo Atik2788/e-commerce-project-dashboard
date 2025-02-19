@@ -135,7 +135,6 @@ const AddProduct = () => {
     useEffect(() => {
         if (successMessage) {
           toast.success(successMessage);
-          dispatch(messageClear());
           setState({
             name: "",
             description: "",
@@ -147,10 +146,12 @@ const AddProduct = () => {
           setImageShow([]);
           setImages([])
           setCategory('');
+          dispatch(messageClear(successMessage));
         }
         if (errorMessage) {
           toast.error(errorMessage);
-          dispatch(messageClear());
+          dispatch(messageClear(errorMessage));
+        
         }
       }, [successMessage, errorMessage]);
 

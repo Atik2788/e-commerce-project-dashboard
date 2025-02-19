@@ -12,7 +12,7 @@ const TableNew = ({
 }) => {
   // console.log(routerPage);
   // console.log(editPage);
-  console.log(rows);
+  // console.log(rows);
   return (
     <div className="relative ">
       <table className="w-full text-sm text-[#d0d2d6] text-center">
@@ -48,7 +48,7 @@ const TableNew = ({
                     <img
                       src={row.image}
                       alt={row.name}
-                      className="w-10 rounded-full"
+                      className="w-10 h-10 rounded-full"
                     />
                     {/* Full-Size Image on Hover */}
                     <div className="absolute hidden group-hover:block top-0 left-10">
@@ -70,7 +70,7 @@ const TableNew = ({
                     <img
                       src={row.images[0]}
                       alt={row.name}
-                      className="w-10 rounded-full"
+                      className="w-10 h-10 rounded-full"
                     />
                     {/* Full-Size Image on Hover */}
                     <div className="absolute hidden group-hover:block top-0 left-10">

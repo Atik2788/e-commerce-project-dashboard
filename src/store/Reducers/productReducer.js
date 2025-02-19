@@ -29,7 +29,7 @@ export const get_products = createAsyncThunk(
         
       const { data } = await api.get(`/products-get?page=${page}&&searchValue=${searchValue}&&parPage=${parPage}`, {
         withCredentials: true});
-      console.log(data);
+      // console.log(data);
       return fulfillWithValue(data);
     } catch (error) {
       // console.log(error.response.data.error);
