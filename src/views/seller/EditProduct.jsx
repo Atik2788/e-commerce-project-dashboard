@@ -1,36 +1,35 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { FaRegImages } from "react-icons/fa6";
 import { MdClose } from "react-icons/md";
+import { useDispatch, useSelector } from 'react-redux';
+import { get_category } from '../../store/Reducers/categoryReducer';
+import { get_product } from '../../store/Reducers/productReducer';
+
+
+
 
 const EditProduct = () => {
 
-    const categorys = [
-        {
-            id: 1,
-            name: 'Sports'
-        },
-        {
-            id: 2,
-            name: 'Tshirt'
-        },
-        {
-            id: 3,
-            name: 'Mobile'
-        },
-        {
-            id: 4,
-            name: 'Watch'
-        },
-        {
-            id: 5,
-            name: 'Computer'
-        },
-        {
-            id: 6,
-            name: 'Pant'
-        }
-    ]
+    const {productId} = useParams()
+    // console.log(productId);
+
+    const dispatch = useDispatch();
+    const {categorys} = useSelector(state => state.category)
+    const {product} = useSelector(state => state.product)
+
+    useEffect(()=>{
+        dispatch(get_category({
+            page: '',
+            searchValue: '',
+            parPage: ''
+        }))
+    },[dispatch])
+
+    useEffect(()=>{
+        dispatch(get_product(productId))
+    },[productId, dispatch])
+
 
     const [state, setState] = useState({
         name: "",
@@ -83,20 +82,20 @@ const EditProduct = () => {
 
         useEffect(() =>{
             setState({
-                name: "Mens Tshirt",
-                description: "Soft and breathable men's t-shirt made from 100% cotton. Features a classic fit, ribbed crew neck, and durable stitching. Perfect for casual wear, offering all-day comfort and effortless style.",
-                discount: 10,
-                price: "225",
-                brand: "Easy",
-                stock: 10
+                name: product.name,
+                description: product.description,
+                discount: product.discount,
+                price: product.price,
+                brand: product.brand,
+                stock: product.stock
             })
-            setCategory('Tshirt');
+            setCategory(product.category);
             setImageShow([
                 'http://localhost:3000/images/admin.jpeg',
                 'http://localhost:3000/images/seller.jpg',
                 'http://localhost:3000/images/demo.jpg',
             ])
-        }, [])
+        }, [product])
     
 
 

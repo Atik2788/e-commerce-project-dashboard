@@ -130,7 +130,7 @@ const TableNew = ({
                     >
                       {routerPage ? (
                         <Link
-                          to={routerPage(row.no)}
+                          to={routerPage(row._id)}
                           name={row.name}
                           className=""
                         >
@@ -138,7 +138,7 @@ const TableNew = ({
                         </Link>
                       ) : editPage ? (
                         <Link
-                          to={editPage(row.no)}
+                          to={editPage(row._id)}
                           name={row.name}
                           className=""
                         >

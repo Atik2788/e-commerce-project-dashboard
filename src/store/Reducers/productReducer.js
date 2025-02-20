@@ -37,7 +37,31 @@ export const get_products = createAsyncThunk(
     }
   }
 );
-//************** */ End get_category method ***********
+//************** */ End get_products method ***********
+ 
+
+export const get_product = createAsyncThunk(
+  "product/get_product",
+  async ( productId, { rejectWithValue, fulfillWithValue }) => {
+
+    try {
+        
+      const { data } = await api.get(`/product-get/${productId}`, {
+        withCredentials: true});
+      console.log(data);
+      return fulfillWithValue(data);
+    } catch (error) {
+      // console.log(error.response.data.error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+//************** */ End get_products method ***********
+
+
+
+
+
 
 export const productReducer = createSlice({
   name: "product",
@@ -46,6 +70,7 @@ export const productReducer = createSlice({
     errorMessage: "",
     loader: false,
     products: [],
+    product: '',
     totalProduct: 0
   },
 
@@ -68,12 +93,15 @@ export const productReducer = createSlice({
       .addCase(add_product.fulfilled, (state, { payload }) => {
         state.loader = false;
         state.successMessage = payload.message;
-        state.products = [...state.products, payload.products]
       })
 
       .addCase(get_products.fulfilled, (state, { payload }) => {
         state.totalProduct = payload.totalProduct;
         state.products = payload.products;
+      })
+
+      .addCase(get_product.fulfilled, (state, { payload }) => {
+        state.product = payload.product;
       })
   },
 });
