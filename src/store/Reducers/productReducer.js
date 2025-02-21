@@ -48,7 +48,7 @@ export const get_product = createAsyncThunk(
         
       const { data } = await api.get(`/product-get/${productId}`, {
         withCredentials: true});
-      console.log(data);
+      // console.log('product by id', data);
       return fulfillWithValue(data);
     } catch (error) {
       // console.log(error.response.data.error);
@@ -57,6 +57,24 @@ export const get_product = createAsyncThunk(
   }
 );
 //************** */ End get_products method ***********
+ 
+
+export const update_product = createAsyncThunk(
+  "product/update_product",
+  async ( product, { rejectWithValue, fulfillWithValue }) => {
+    try {
+        
+      const { data } = await api.post(`/product-update`, product, {
+        withCredentials: true});
+      // console.log('product by id', data);
+      return fulfillWithValue(data);
+    } catch (error) {
+      // console.log(error.response.data.error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+//************** */ End update_product method ***********
 
 
 

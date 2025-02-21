@@ -3,8 +3,11 @@ import { Link, useParams } from 'react-router-dom';
 import { FaRegImages } from "react-icons/fa6";
 import { MdClose } from "react-icons/md";
 import { useDispatch, useSelector } from 'react-redux';
-import { get_category } from '../../store/Reducers/categoryReducer';
-import { get_product } from '../../store/Reducers/productReducer';
+import { get_category, messageClear } from '../../store/Reducers/categoryReducer';
+import { get_product, update_product } from '../../store/Reducers/productReducer';
+import { PropagateLoader } from 'react-spinners';
+import { overrideStyle } from '../../utils/utils';
+import toast from 'react-hot-toast';
 
 
 
@@ -16,7 +19,8 @@ const EditProduct = () => {
 
     const dispatch = useDispatch();
     const {categorys} = useSelector(state => state.category)
-    const {product} = useSelector(state => state.product)
+      const {loader, product, successMessage, errorMessage} = useSelector((state) => state.product);
+
 
     useEffect(()=>{
         dispatch(get_category({
@@ -50,9 +54,16 @@ const EditProduct = () => {
 
     const [cateShow, setCateShow] = useState(false);
     const [category, setCategory] = useState("");
-    const [allCategory, setAllCategory]= useState(categorys);
+    const [allCategory, setAllCategory]= useState([]);
     const [searchValue, setSearchValue]= useState('');
     console.log(searchValue);
+
+
+    useEffect(() =>{
+        if(categorys && Array.isArray(categorys)){
+            setAllCategory(categorys)
+        }
+    },[categorys])
 
     const categorySearch = (e) =>{
         const value = e.target.value
@@ -62,7 +73,7 @@ const EditProduct = () => {
             setAllCategory(srcValue)
         }
         else{
-            setAllCategory(categorys)
+                setAllCategory(categorys)
         }
     }
 
@@ -82,20 +93,57 @@ const EditProduct = () => {
 
         useEffect(() =>{
             setState({
-                name: product.name,
-                description: product.description,
-                discount: product.discount,
-                price: product.price,
-                brand: product.brand,
-                stock: product.stock
+                name: product?.name,
+                description: product?.description,
+                discount: product?.discount,
+                price: product?.price,
+                brand: product?.brand,
+                stock: product?.stock
             })
-            setCategory(product.category);
-            setImageShow([
-                'http://localhost:3000/images/admin.jpeg',
-                'http://localhost:3000/images/seller.jpg',
-                'http://localhost:3000/images/demo.jpg',
-            ])
+            setCategory(product?.category);
+            setImageShow(product?.images)
         }, [product])
+
+
+
+
+        useEffect(() => {
+            if (successMessage) {
+              toast.success(successMessage);
+              setState({
+                name: "",
+                description: "",
+                discount: "",
+                price: "",
+                brand: "",
+                stock: ""
+              });
+
+              setCategory('');
+              dispatch(messageClear(successMessage));
+            }
+            if (errorMessage) {
+              toast.error(errorMessage);
+              dispatch(messageClear(errorMessage));
+            
+            }
+          }, [successMessage, errorMessage, dispatch]);
+
+
+          const update = (e) =>{
+            e.preventDefault();
+
+            const obj={
+                name: state.name,
+                description: state.description,
+                discount: state.discount,
+                price: state.price,
+                brand: state.brand,
+                stock: state.stock,
+                productId:  productId
+            }
+            dispatch(update_product(obj))
+          }
     
 
 
@@ -113,7 +161,7 @@ const EditProduct = () => {
 
                 {/* product add form start */}
                 <div className="">
-                    <form className=''>
+                    <form onSubmit={update}>
 
                         {/* first product row start */}
                         <div className="flex flex-col mb-3 md:flex-row gap-4 w-full text-[#d0d2d6]">
@@ -160,9 +208,9 @@ const EditProduct = () => {
                                         className='px-3 py-1 w-full focus:border-[#8ae1db] outline-none bg-transparent border border-slate-700 rounded-md text-[#d0d2d6] overflow-hidden' type="text" placeholder='Search' />
                                     </div>
                                     <div className="pt-14"></div>
-                                    <div className="flex justify-start items-start flex-col h-[200px] ">
-                                        {
-                                            allCategory.map((c, i) => <span 
+                                    <div className="flex justify-start items-start flex-col h-[300px] overflow-auto">
+                                        {                                             
+                                        allCategory?.map((c, i) => <span 
                                             key={i}
                                             className={`px-4 py-2 w-full text-[#d0d2d6] cursor-pointer hover:bg-[#8ae1db] hover:text-black ${category === c.name && 'bg-[#39a290]'}`}
                                             onClick={() => {
@@ -170,7 +218,7 @@ const EditProduct = () => {
                                                 setCategory(c.name)
                                                 setSearchValue("")
                                                 setAllCategory(categorys)
-                                            }}>{c.name}</span>)
+                                            }}>{c.name}</span>)                                             
                                         }
                                     </div>
 
@@ -254,7 +302,7 @@ const EditProduct = () => {
                         <div className="grid lg:grid-cols-4 grid-cols-1 md:grid-cols-3 sm:grid-cols-2 sm:gap-4 md:gap-4 gap-3 w-full text-[#d0d2d6] mb-4" >
                             
                            {
-                            imageShow.map((img, i) => <div>
+                            imageShow?.map((img, i) => <div>
                                 <label htmlFor={i}>
                                     <img src={img} alt="" />
                                 </label>
@@ -265,9 +313,19 @@ const EditProduct = () => {
                         {/*product img row end */}
 
                         <div className='flex'>
-                            <button className="bg-[#277367] w-[150px] hover:shadow-[#8ae1db] hover:shadow-md text-white rounded-md py-2">
-                                Save Changes
-                            </button>
+                        <button
+                      sisabled={loader ? true : false}
+                      className="bg-[#277367] w-[250px] hover:shadow-[#71b5b0] hover:shadow-md text-white rounded-md py-2 my-2"
+                    >
+                      {loader ? (
+                        <PropagateLoader
+                          color="#fff"
+                          cssOverride={overrideStyle}
+                        />
+                      ) : (
+                        "Save Changes"
+                      )}
+                    </button>
                         </div>
 
 

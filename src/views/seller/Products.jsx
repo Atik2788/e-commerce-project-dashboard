@@ -17,6 +17,7 @@ const Products = () => {
   const [searchValue, setSearchValue] = useState("");
   const [parPage, setParPage] = useState(5);
   const [show, setShow] = useState(false);
+  const [allProducts, setAllProducts] = useState([])
 
 
     useEffect(() => {
@@ -27,6 +28,14 @@ const Products = () => {
       };
       dispatch(get_products(obj));
     }, [searchValue, currentPage, parPage]);
+
+
+    useEffect(() =>{
+      // console.log('redus products', products);
+      if(products){
+        setAllProducts(products)
+      }
+    },[products])
     
 
   return (
@@ -44,7 +53,7 @@ const Products = () => {
 
         <TableNew
           headers={headersSellerProducts} 
-          rows={products.map(product => ({
+          rows={allProducts.map(product => ({
             ...product,
             editIcon: <FaEdit className="text-black" />,
             viewIcon: <FaRegEye />,
