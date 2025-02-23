@@ -3,8 +3,8 @@ import { Link, useParams } from 'react-router-dom';
 import { FaRegImages } from "react-icons/fa6";
 import { MdClose } from "react-icons/md";
 import { useDispatch, useSelector } from 'react-redux';
-import { get_category, messageClear } from '../../store/Reducers/categoryReducer';
-import { get_product, update_product } from '../../store/Reducers/productReducer';
+import { get_category } from '../../store/Reducers/categoryReducer';
+import { get_product, update_product, product_image_update, messageClear } from '../../store/Reducers/productReducer';
 import { PropagateLoader } from 'react-spinners';
 import { overrideStyle } from '../../utils/utils';
 import toast from 'react-hot-toast';
@@ -45,6 +45,7 @@ const EditProduct = () => {
 
     })
 
+    // get the value for the state from the form
     const inputHandle = (e) =>{
         setState({
             ...state,
@@ -59,12 +60,14 @@ const EditProduct = () => {
     // console.log(searchValue);
 
 
+    // if category has valu then set it in the setAllCategory
     useEffect(() =>{
         if(categorys.length > 0){
             setAllCategory(categorys)
         }
     },[categorys])
 
+    // category search option
     const categorySearch = (e) =>{
         const value = e.target.value
         setSearchValue(value)
@@ -78,15 +81,17 @@ const EditProduct = () => {
     }
 
 
+    // change the image
     const [images, setImages] = useState([]);
     const [imageShow, setImageShow] = useState([]);
 
-    // console.log('images', images);
-    // console.log('imageShow', imageShow);
-
     const changeImage = (img, files) =>{
             if(files.length > 0){
-                
+                dispatch(product_image_update({
+                    oldImage: img, 
+                    newImage: files[0],
+                    productId 
+                }))
             }
         }
 

@@ -75,6 +75,29 @@ export const update_product = createAsyncThunk(
   }
 );
 //************** */ End update_product method ***********
+ 
+
+export const product_image_update = createAsyncThunk(
+  "product/product_image_update",
+  async ( {oldImage, newImage, productId}, { rejectWithValue, fulfillWithValue }) => {
+
+    try {
+        const formData = new FormData();
+        formData.append('oldImage', oldImage)
+        formData.append('newImage', newImage)
+        formData.append('productId', productId)
+
+      const { data } = await api.post('/product-image-update', formData, {
+        withCredentials: true});
+      // console.log('product by id', data);
+      return fulfillWithValue(data);
+    } catch (error) {
+      // console.log(error.response.data.error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+//************** */ End product_image_update method ***********
 
 
 
