@@ -48,7 +48,7 @@ const EditProduct = () => {
     const inputHandle = (e) =>{
         setState({
             ...state,
-            [e.target.name] : e.target.value
+            [e.target.name]: e.target.value
         })
     }
 
@@ -56,11 +56,11 @@ const EditProduct = () => {
     const [category, setCategory] = useState("");
     const [allCategory, setAllCategory]= useState([]);
     const [searchValue, setSearchValue]= useState('');
-    console.log(searchValue);
+    // console.log(searchValue);
 
 
     useEffect(() =>{
-        if(categorys && Array.isArray(categorys)){
+        if(categorys.length > 0){
             setAllCategory(categorys)
         }
     },[categorys])
@@ -110,22 +110,11 @@ const EditProduct = () => {
         useEffect(() => {
             if (successMessage) {
               toast.success(successMessage);
-              setState({
-                name: "",
-                description: "",
-                discount: "",
-                price: "",
-                brand: "",
-                stock: ""
-              });
-
-              setCategory('');
               dispatch(messageClear(successMessage));
             }
             if (errorMessage) {
               toast.error(errorMessage);
-              dispatch(messageClear(errorMessage));
-            
+              dispatch(messageClear(errorMessage));            
             }
           }, [successMessage, errorMessage, dispatch]);
 
