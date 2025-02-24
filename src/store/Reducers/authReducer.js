@@ -115,7 +115,8 @@ export const authReducer = createSlice({
     // userInfo: "",
     // role: returnRole(localStorage.getItem('accessToken')),
     // token: localStorage.getItem('accessToken')
-    userInfo: initialUserInfo, // ✅ Load from localStorage
+    // ✅ Load from localStorage
+    userInfo: initialUserInfo, 
     role: returnRole(localStorage.getItem("accessToken")),
   },
   reducers: {
@@ -179,8 +180,18 @@ export const authReducer = createSlice({
         state.loader = false;
         state.userInfo = payload.userInfo; 
 
-        localStorage.setItem("userInfo", JSON.stringify(payload.userInfo)); // ✅ Save user info
+        localStorage.setItem("userInfo", JSON.stringify(payload.userInfo)); // ✅ Save user info in local storage
       })
+      
+      .addCase(profile_image_upload.pending, (state, { payload }) => {
+        state.loader = true;
+       })
+      
+      .addCase(profile_image_upload.fulfilled, (state, { payload }) => {
+        state.loader = false;
+        state.userInfo = payload.userInfo; 
+      })
+
 
 
       .addCase(seller_login.pending, (state, { payload }) => {
