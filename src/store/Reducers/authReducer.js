@@ -84,6 +84,26 @@ export const seller_register = createAsyncThunk(
     }
   }
 );
+// end seller_register method
+
+export const profile_info_add = createAsyncThunk(
+  "auth/profile_info_add",
+  async (info, { rejectWithValue, fulfillWithValue }) => {
+    try {
+      const { data } = await api.post("/profile-info-add", info, {
+        withCredentials: true});
+        localStorage.setItem('accessToken', data.token)
+      // console.log(data);
+      return fulfillWithValue(data);
+    } catch (error) {
+      // console.log(error.response.data.error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+// end profile_info_add method
+
+
 
 const returnRole = (token) =>{
  if (token) {

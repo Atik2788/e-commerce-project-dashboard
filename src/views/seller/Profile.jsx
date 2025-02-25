@@ -3,7 +3,7 @@ import { FaImages } from "react-icons/fa6";
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import { FaRegEdit } from "react-icons/fa";
 import { useDispatch, useSelector } from 'react-redux';
-import {messageClear, profile_image_upload} from '../../store/Reducers/authReducer'
+import {messageClear, profile_image_upload, profile_info_add} from '../../store/Reducers/authReducer'
 import toast from "react-hot-toast";
 import { PropagateLoader } from "react-spinners";
 import { overrideStyle } from "../../utils/utils";
@@ -45,6 +45,11 @@ const Profile = () => {
       ...state,
       [e.target.name] : e.target.value
     })
+  }
+
+  const add = (e) =>{
+    e.preventDefault();
+    dispatch(profile_info_add(state))
   }
 
 
@@ -147,7 +152,7 @@ const Profile = () => {
             {/* profile details2 section start */}
             <div className="px-0 md:px-5 py-2">
               {!userInfo?.shopInfo ? (
-                <form>
+                <form  onSubmit={add}>
                   <div className="flex flex-col w-full gap-1 mb-2">
                     <label htmlFor="Shop">Shop Name</label>
                     <input
