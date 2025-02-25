@@ -334,17 +334,17 @@ const AddProduct = () => {
 
                         <div className='flex'>
                         <button
-                      sisabled={loader ? true : false}
-                      className="bg-[#277367] w-[250px] hover:shadow-[#71b5b0] hover:shadow-md text-white rounded-md py-2 my-2"
-                    >
-                      {loader ? (
-                        <PropagateLoader
-                          color="#fff"
-                          cssOverride={overrideStyle}
-                        />
-                      ) : (
-                        "Add Product"
-                      )}
+                            sisabled={loader ? true : false}
+                            className="bg-[#277367] w-[250px] hover:shadow-[#71b5b0] hover:shadow-md text-white rounded-md py-2 my-2"
+                            >
+                            {loader ? (
+                                <PropagateLoader
+                                color="#fff"
+                                cssOverride={overrideStyle}
+                                />
+                            ) : (
+                                "Add Product"
+                            )}
                     </button>
                         </div>
 

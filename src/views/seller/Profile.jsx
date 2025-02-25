@@ -1,12 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FaImages } from "react-icons/fa6";
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import { FaRegEdit } from "react-icons/fa";
 import { useDispatch, useSelector } from 'react-redux';
 import {messageClear, profile_image_upload} from '../../store/Reducers/authReducer'
 import toast from "react-hot-toast";
+import { PropagateLoader } from "react-spinners";
+import { overrideStyle } from "../../utils/utils";
 
 const Profile = () => {
+
+  const [state, setState] = useState({
+    division: '',
+    district: '',
+    shopName: '',
+    sub_district: ''
+     
+  })
 
   
   const dispatch = useDispatch();
@@ -28,6 +38,13 @@ const Profile = () => {
       formData.append('image', e.target.files[0])
       dispatch(profile_image_upload(formData))
     }
+  }
+
+  const inputHandle = (e) =>{
+    setState({
+      ...state,
+      [e.target.name] : e.target.value
+    })
   }
 
 
@@ -126,6 +143,7 @@ const Profile = () => {
             </div>
             {/* profile details section end */}
 
+
             {/* profile details2 section start */}
             <div className="px-0 md:px-5 py-2">
               {!userInfo?.shopInfo ? (
@@ -133,6 +151,8 @@ const Profile = () => {
                   <div className="flex flex-col w-full gap-1 mb-2">
                     <label htmlFor="Shop">Shop Name</label>
                     <input
+                    value={state.shopName}
+                    onChange={inputHandle}
                       type="text"
                       name="shopName"
                       id="Shop"
@@ -144,6 +164,8 @@ const Profile = () => {
                   <div className="flex flex-col w-full gap-1 mb-2">
                     <label htmlFor="division">Division Name</label>
                     <input
+                    value={state.division}
+                    onChange={inputHandle}
                       type="text"
                       name="division"
                       id="division"
@@ -155,6 +177,8 @@ const Profile = () => {
                   <div className="flex flex-col w-full gap-1 mb-2">
                     <label htmlFor="distric">District Name</label>
                     <input
+                    value={state.district}
+                    onChange={inputHandle}
                       type="text"
                       name="distric"
                       id="distric"
@@ -164,21 +188,31 @@ const Profile = () => {
                   </div>
 
                   <div className="flex flex-col w-full gap-1 mb-2">
-                    <label htmlFor="subdis">Sub District Name</label>
+                    <label htmlFor="sub">Sub District Name</label>
                     <input
+                    value={state.sub_district}
+                    onChange={inputHandle}
                       type="text"
-                      name="subdis"
-                      id="subdis"
+                      name="sub_district"
+                      id="sub"
                       placeholder="Sub Distric Name"
                       className="px-4 py-2 focus:border-indigo-500 outline-none bg-[#8ae1db] rounded-md text-[#39a290]"
                     />
                   </div>
 
-                  <div className="flex">
-                    <button className="bg-[#277367] w-[150px] mt-4 hover:shadow-[#8ae1db] hover:shadow-md text-white rounded-md py-2">
-                      Save Changes
+                  <button
+                      sisabled={loader ? true : false}
+                      className="bg-[#277367] w-[250px] hover:shadow-[#71b5b0] hover:shadow-md text-white rounded-md py-2 my-2"
+                    >
+                      {loader ? (
+                        <PropagateLoader
+                          color="#fff"
+                          cssOverride={overrideStyle}
+                        />
+                      ) : (
+                        "Save Changes"
+                      )}
                     </button>
-                  </div>
                 </form>
               ) : (
                 <div className="flex justify-between text-sm flex-col gap-2 p-4 bg-slate-800 rounded-md relative">
@@ -188,22 +222,22 @@ const Profile = () => {
 
                   <div className="flex gap-2">
                     <span className="font-semibold">Shop Name : </span>
-                    <span>Easy Shop</span>
+                    <span>{userInfo.shopInfo?.shopName}</span>
                   </div>
 
                   <div className="flex gap-2">
                     <span className="font-semibold">Division : </span>
-                    <span>Dhaka</span>
+                    <span>{userInfo.shopInfo?.division}</span>
                   </div>
 
                   <div className="flex gap-2">
                     <span className="font-semibold">District : </span>
-                    <span>Kishoreganj</span>
+                    <span>{userInfo.shopInfo?.district}</span>
                   </div>
 
                   <div className="flex gap-2">
                     <span className="font-semibold">Sub District : </span>
-                    <span>Kihoreganj Sadar</span>
+                    <span>{userInfo.shopInfo?.sub_district}</span>
                   </div>
                 </div>
               )}
