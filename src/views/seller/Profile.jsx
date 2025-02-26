@@ -48,7 +48,7 @@ const Profile = () => {
   }
 
   const add = (e) =>{
-    e.preventDefault();
+    e.preventDefault()
     dispatch(profile_info_add(state))
   }
 
@@ -180,14 +180,14 @@ const Profile = () => {
                   </div>
 
                   <div className="flex flex-col w-full gap-1 mb-2">
-                    <label htmlFor="distric">District Name</label>
+                    <label htmlFor="district">District Name</label>
                     <input
                     value={state.district}
                     onChange={inputHandle}
                       type="text"
-                      name="distric"
-                      id="distric"
-                      placeholder="Distric Name"
+                      name="district"
+                      id="district"
+                      placeholder="District Name"
                       className="px-4 py-2 focus:border-indigo-500 outline-none bg-[#8ae1db] rounded-md text-[#39a290]"
                     />
                   </div>
@@ -200,7 +200,7 @@ const Profile = () => {
                       type="text"
                       name="sub_district"
                       id="sub"
-                      placeholder="Sub Distric Name"
+                      placeholder="Sub District Name"
                       className="px-4 py-2 focus:border-indigo-500 outline-none bg-[#8ae1db] rounded-md text-[#39a290]"
                     />
                   </div>

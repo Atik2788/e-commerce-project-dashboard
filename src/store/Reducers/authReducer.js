@@ -92,7 +92,7 @@ export const profile_info_add = createAsyncThunk(
     try {
       const { data } = await api.post("/profile-info-add", info, {
         withCredentials: true});
-        localStorage.setItem('accessToken', data.token)
+        // localStorage.setItem('accessToken', data.token)
       // console.log(data);
       return fulfillWithValue(data);
     } catch (error) {
@@ -133,10 +133,10 @@ export const authReducer = createSlice({
     errorMessage: "",
     loader: false,
     // userInfo: "",
-    // role: returnRole(localStorage.getItem('accessToken')),
-    // token: localStorage.getItem('accessToken')
+    token: localStorage.getItem('accessToken'),
     // ✅ Load from localStorage
     userInfo: initialUserInfo, 
+
     role: returnRole(localStorage.getItem("accessToken")),
   },
   reducers: {
@@ -159,8 +159,10 @@ export const authReducer = createSlice({
         state.successMessage = payload.message; 
         state.token = payload.token; 
         state.role = returnRole(payload.token); 
-        state.userInfo = payload.userInfo;  // ✅ Updates userInfo
-        localStorage.setItem("userInfo", JSON.stringify(payload.userInfo)); // ✅ Save user info in local storage
+        // ✅ Updates userInfo
+        // state.userInfo = payload.userInfo;  
+        localStorage.setItem("userInfo", JSON.stringify(payload.userInfo)); 
+        // ✅ Save user info in local storage
       })
       // set the user info in local storage, bcs. ProtectRoutes.jsx need user info, If I dont store it in local storage then it remove user info after every relod.
 
@@ -195,12 +197,25 @@ export const authReducer = createSlice({
         state.successMessage = payload.message; 
         state.token = payload.token; 
         state.role = returnRole(payload.token); 
+
+            // ✅ লোকাল স্টোরেজে সেভ করুন
+    if (payload.userInfo) {
+      state.userInfo = payload.userInfo;
+      localStorage.setItem("userInfo", JSON.stringify(payload.userInfo));
+      localStorage.setItem("accessToken", payload.token);
+  }
+        // localStorage.setItem("userInfo", JSON.stringify(payload.userInfo))
+
       })
+
+
+      
       .addCase(get_user_info.fulfilled, (state, { payload }) => {
         state.loader = false;
-        state.userInfo = payload.userInfo; 
 
-        localStorage.setItem("userInfo", JSON.stringify(payload.userInfo)); // ✅ Save user info in local storage
+        state.userInfo = payload.userInfo;
+        // localStorage.setItem("userInfo", JSON.stringify(payload.userInfo));
+         // ✅ Save user info in local storage
       })
       
       .addCase(profile_image_upload.pending, (state, { payload }) => {
@@ -209,7 +224,20 @@ export const authReducer = createSlice({
       
       .addCase(profile_image_upload.fulfilled, (state, { payload }) => {
         state.loader = false;
+        state.userInfo = payload.userInfo;
+        state.successMessage = payload.message
+      })
+
+
+      .addCase(profile_info_add.pending, (state, { payload }) => {
+        state.loader = true;
+      })
+      .addCase(profile_info_add.fulfilled, (state, { payload }) => {
+        state.loader = false;
         state.userInfo = payload.userInfo; 
+        // localStorage.setItem("userInfo", JSON.stringify(payload.userInfo)); 
+        // ✅ Save user info in local storage
+        state.successMessage = payload.message
       })
 
 
@@ -226,8 +254,9 @@ export const authReducer = createSlice({
         state.successMessage = payload.message; 
         state.token = payload.token; 
         state.role = returnRole(payload.token); 
-        state.userInfo = payload.userInfo;  // ✅ Updates userInfo
-        localStorage.setItem("userInfo", JSON.stringify(payload.userInfo)); // ✅ Save user info
+        // state.userInfo = payload.userInfo;
+        localStorage.setItem("userInfo", JSON.stringify(payload.userInfo)); 
+        // ✅ Save user info
       })
   },
 });

@@ -44,7 +44,7 @@ const Register = () => {
       dispatch(messageClear())
   }
 
-  }, [successMessage,errorMessage])
+  }, [successMessage,errorMessage, dispatch, navigate])
 
 
 
