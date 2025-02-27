@@ -1,13 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { headers2, rows2 } from "../../api/headersAndRows";
 import Table from "../commonPages/Table";
 import SetParPage from "../commonPages/SetParPage";
 import Pagination from "../commonPages/Pagination";
+import { useDispatch, useSelector } from "react-redux";
+import { get_seller_request} from "../../store/Reducers/sellerReducer";
 
 const SellerRequest = () => {
+
+  const dispatch = useDispatch();
+  const { seller, totalSeller } = useSelector((state) => state.seller);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [parPage, setParPage] = useState(5);
-    const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState("");
+
+  useEffect(() =>{
+    dispatch(get_seller_request({
+      parPage,
+      searchValue,
+      page: currentPage,
+
+    }))
+  }, [dispatch, parPage, searchValue, currentPage])
+
+    
 
 
   return (

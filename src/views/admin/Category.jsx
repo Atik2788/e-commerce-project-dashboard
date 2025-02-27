@@ -6,11 +6,7 @@ import SetParPage from "../commonPages/SetParPage";
 import Pagination from "../commonPages/Pagination";
 import { PropagateLoader } from "react-spinners";
 import { overrideStyle } from "./../../utils/utils";
-import {
-  categoryAdd,
-  messageClear,
-  get_category,
-} from "../../store/Reducers/categoryReducer";
+import { categoryAdd,messageClear,get_category} from "../../store/Reducers/categoryReducer";
 import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
 import { FaEdit, FaRegTrashAlt } from "react-icons/fa";

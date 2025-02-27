@@ -9,6 +9,7 @@ const SetParPage = ({setParPage, searchValue, setSearchValue}) => {
                         <option className='' value="10">10</option>
                         <option className='' value="20">20</option>
                     </select>
+                    
                     <input onChange={(e) => setSearchValue(e.target.value)}
                     value={searchValue} className='px-4 py-2 focus:border-indigo-500 outline-none bg-[#8ae1db] rounded-md text-[#39a290]' type="text" placeholder='search' />
                 </div>
