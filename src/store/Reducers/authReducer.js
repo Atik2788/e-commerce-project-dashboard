@@ -6,6 +6,7 @@ export const admin_login = createAsyncThunk(
   "auth/admin_login",
   async (info, { rejectWithValue, fulfillWithValue }) => {
     // console.log(info);
+    
     try {
       const { data } = await api.post("/admin-login", info, {
         withCredentials: true});
@@ -121,9 +122,14 @@ const returnRole = (token) =>{
 }
 
 
-const initialUserInfo = localStorage.getItem("userInfo")
-  ? JSON.parse(localStorage.getItem("userInfo"))
-  : "";
+let initialUserInfo = "";
+try {
+  const storedUserInfo = localStorage.getItem("userInfo");
+  initialUserInfo = storedUserInfo ? JSON.parse(storedUserInfo) : "";
+} catch (error) {
+  console.error("Error parsing user info:", error);
+  initialUserInfo = "";
+}
 
 
 export const authReducer = createSlice({
@@ -159,6 +165,7 @@ export const authReducer = createSlice({
         state.successMessage = payload.message; 
         state.token = payload.token; 
         state.role = returnRole(payload.token); 
+        console.log("Admin Login Payload:", payload); // Debugging
         // ✅ Updates userInfo
         // state.userInfo = payload.userInfo;  
         localStorage.setItem("userInfo", JSON.stringify(payload.userInfo)); 
