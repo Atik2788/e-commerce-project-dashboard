@@ -10,7 +10,7 @@ const SellerDetails = () => {
   const {sellerId} = useParams()
 
     useEffect(() =>{
-      dispatch(get_seller({sellerId}))
+      dispatch(get_seller(sellerId))
     }, [sellerId])
   
  
@@ -25,7 +25,12 @@ const SellerDetails = () => {
 
             <div className="w-3/12 flex justify-center items-center py-3">
                 <div>
-                    <img className="w-full h-[230px] rounded-md" src="http://localhost:3000/images/seller.jpg " alt="" />
+                    { seller.image ?
+                    <img className="w-full h-[230px] rounded-md" src={seller?.image} alt="" />
+                    : 
+                    <p className="border border-gray-400 p-10 rounded-md">No Image</p>
+                    }
+                    
                 </div>
             </div>
 
@@ -39,23 +44,23 @@ const SellerDetails = () => {
                     <div className="flex justify-between text-sm flex-col gap-2 p-4 bg-[#8ae1db] rounded-md">
                         <div className="flex gap-2 font-bold text-black">
                             <span>Name: </span>
-                            <span>Bashir Ahmed</span>
+                            <span>{seller?.name}</span>
                         </div>
                         <div className="flex gap-2 font-bold text-black">
                             <span>Email: </span>
-                            <span>bashirahmed@gmail.com</span>
+                            <span>{seller?.email}</span>
                         </div>
                         <div className="flex gap-2 font-bold text-black">
                             <span>Role: </span>
-                            <span>Seller </span>
+                            <span>{seller?.role}</span>
                         </div>
                         <div className="flex gap-2 font-bold text-black">
                             <span>Status: </span>
-                            <span>Active </span>
+                            <span>{seller?.status}</span>
                         </div>
                         <div className="flex gap-2 font-bold text-black">
                             <span>Payment Status: </span>
-                            <span>Active </span>
+                            <span>{seller?.payment}</span>
                         </div>
                     </div>
                 </div>
@@ -71,19 +76,19 @@ const SellerDetails = () => {
                     <div className="flex justify-between text-sm flex-col gap-2 p-4 bg-[#8ae1db] rounded-md">
                         <div className="flex gap-2 font-bold text-black">
                             <span>Shop Name: </span>
-                            <span>Easy Shop</span>
+                            <span>{seller?.shopInfo?.shopName}</span>
                         </div>
                         <div className="flex gap-2 font-bold text-black">
                             <span>Devision: </span>
-                            <span>Dhaka</span>
+                            <span>{seller?.shopInfo?.division}</span>
                         </div>
                         <div className="flex gap-2 font-bold text-black">
                             <span>Distric:</span>
-                            <span>Seller </span>
+                            <span>{seller?.shopInfo?.district}</span>
                         </div>
                         <div className="flex gap-2 font-bold text-black">
                             <span>State: </span>
-                            <span>Paltan </span>
+                            <span>{seller?.shopInfo?.sub_district}</span>
                         </div>
                     </div>
                 </div>

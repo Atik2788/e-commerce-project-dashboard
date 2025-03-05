@@ -4,7 +4,7 @@ import api from "../../api/api";
 
 
 export const get_seller_request = createAsyncThunk(
-  "category/get_seller_request",
+  "seller/get_seller_request",
   async ({ parPage, page, searchValue }, { rejectWithValue, fulfillWithValue }) => {
 
     try {        
@@ -23,14 +23,14 @@ export const get_seller_request = createAsyncThunk(
 
 
 export const get_seller = createAsyncThunk(
-  "category/get_seller",
+  "seller/get_seller",
   async (sellerId, { rejectWithValue, fulfillWithValue }) => {
 
     try {        
       const { data } = await api.get(`/get-seller/${sellerId}`, {
         withCredentials: true,  
       });
-      console.log(data);
+      // console.log(data);
       return fulfillWithValue(data);
     } catch (error) {
       // console.log(error.response.data.error);
@@ -63,6 +63,10 @@ export const sellerReducer = createSlice({
       .addCase(get_seller_request.fulfilled, (state, { payload }) => {
         state.sellers = payload.sellers;
         state.totalSeller  = payload.totalSeller ;
+      })
+
+      .addCase(get_seller.fulfilled, (state, { payload }) => {
+        state.seller = payload.seller;
       })
   }
 });
