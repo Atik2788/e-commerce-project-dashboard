@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Table = ({ headers, rows, iconbgColor, icon2bgColor, routerPage, icon3bgColor, editPage }) => {
+const Table = ({ headers, rows, iconbgColor, icon2bgColor, routerPage, icon3bgColor, editPage, icon2 }) => {
   // console.log(routerPage);
   // console.log(editPage);
   return (
@@ -32,7 +32,7 @@ const Table = ({ headers, rows, iconbgColor, icon2bgColor, routerPage, icon3bgCo
             }
               
 
-              {row.image && (
+              {row.image ? (
                 <td className="whitespace-nowrap flex justify-center items-center py-2 ">
                   <div className="relative group">
                     {/* Thumbnail Image */}
@@ -52,7 +52,10 @@ const Table = ({ headers, rows, iconbgColor, icon2bgColor, routerPage, icon3bgCo
                     </div>
                   </div>
                 </td>
-              )}
+              )              
+            :
+            <td>No Image</td>
+            }
 
               {row.images && (
                 <td className="whitespace-nowrap flex justify-center items-center py-2 ">
@@ -74,7 +77,7 @@ const Table = ({ headers, rows, iconbgColor, icon2bgColor, routerPage, icon3bgCo
                     </div>
                   </div>
                 </td>
-              )}
+              ) }
 
               {row.name && <td className="">{row.name}</td>}
               {/* {row.shopName && <td className="">{row.shopName}</td>} */}
@@ -84,7 +87,7 @@ const Table = ({ headers, rows, iconbgColor, icon2bgColor, routerPage, icon3bgCo
               {row.discount && <td className="">{row.discount}</td>}
               {row.stock && <td className="">{row.stock}</td>}
               {row.email && <td className="">{row.email}</td>}
-              {row.paymentStatus && <td className="">{row.paymentStatus}</td>}
+              {row.payment && <td className="">{row.payment}</td>}
               {row.status && <td className="">{row.status}</td>}
               {row.division && <td className="">{row.division}</td>}
               {row.district && <td className="">{row.district}</td>}
@@ -112,10 +115,23 @@ const Table = ({ headers, rows, iconbgColor, icon2bgColor, routerPage, icon3bgCo
                     <p className={`${icon2bgColor} flex items-center justify-center rounded-full w-8 h-8 mx-auto`}>
                       {routerPage ? (
                         <Link to={routerPage(row.no)} name={row.name} className="">
-                          {row.icon2}
+                          {icon2}
                         </Link>
                       ) : (
                         <Link className="">{row.icon2}</Link>
+                      )}
+
+                    </p>
+                  )}
+                  
+                  {icon2 && (
+                    <p className={`${icon2bgColor} flex items-center justify-center rounded-full w-8 h-8 mx-auto`}>
+                      {routerPage ? (
+                        <Link to={routerPage(row._id)} name={row.name} className="">
+                          {icon2}
+                        </Link>
+                      ) : (
+                        <Link className="">{icon2}</Link>
                       )}
 
                     </p>

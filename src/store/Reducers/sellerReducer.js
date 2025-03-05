@@ -7,8 +7,7 @@ export const get_seller_request = createAsyncThunk(
   "category/get_seller_request",
   async ({ parPage, page, searchValue }, { rejectWithValue, fulfillWithValue }) => {
 
-    try {
-        
+    try {        
       const { data } = await api.get(`/request-seller-get?page=${page}&&searchValue=${searchValue}&&parPage=${parPage}`, {
         withCredentials: true,  
       });
@@ -20,6 +19,26 @@ export const get_seller_request = createAsyncThunk(
     }
   }
 );
+// end get_seller_request method
+
+
+export const get_seller = createAsyncThunk(
+  "category/get_seller",
+  async (sellerId, { rejectWithValue, fulfillWithValue }) => {
+
+    try {        
+      const { data } = await api.get(`/get-seller/${sellerId}`, {
+        withCredentials: true,  
+      });
+      console.log(data);
+      return fulfillWithValue(data);
+    } catch (error) {
+      // console.log(error.response.data.error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+// end get_seller method
 
 export const sellerReducer = createSlice({
   name: "seller",
@@ -27,8 +46,9 @@ export const sellerReducer = createSlice({
     successMessage: "",
     errorMessage: "",
     loader: false,
-    seller: [],
-    totalSeller: 0
+    sellers: [],
+    totalSeller: 0,
+    seller: ''
   },
 
   reducers: {
@@ -38,12 +58,12 @@ export const sellerReducer = createSlice({
   },
 
   extraReducers: (builder) => {
-    // builder
+    builder
 
-    //   .addCase(get_category.fulfilled, (state, { payload }) => {
-    //     state.totalCategory = payload.totalCategory;
-    //     state.categorys = payload.categorys;
-    //   })
+      .addCase(get_seller_request.fulfilled, (state, { payload }) => {
+        state.sellers = payload.sellers;
+        state.totalSeller  = payload.totalSeller ;
+      })
   }
 });
 

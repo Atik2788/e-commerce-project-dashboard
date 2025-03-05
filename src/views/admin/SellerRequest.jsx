@@ -5,11 +5,13 @@ import SetParPage from "../commonPages/SetParPage";
 import Pagination from "../commonPages/Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import { get_seller_request} from "../../store/Reducers/sellerReducer";
+import { FaRegEye } from "react-icons/fa";
 
 const SellerRequest = () => {
 
   const dispatch = useDispatch();
-  const { seller, totalSeller } = useSelector((state) => state.seller);
+  const { sellers, totalSeller } = useSelector((state) => state.seller);
+  // console.log(sellers, totalSeller);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [parPage, setParPage] = useState(5);
@@ -36,9 +38,10 @@ const SellerRequest = () => {
           <SetParPage setParPage={setParPage} searchValue={searchValue} setSearchValue={setSearchValue}/>
           <Table
             headers={headers2}
-            rows={rows2}
-            iconbgColor="bg-green-600 hover:bg-green-500 text-black"
+            rows={sellers }
+            icon2bgColor="bg-green-600 hover:bg-green-500 text-black"
             routerPage={(no) => `/admin/dashboard/seller/details/${no}`}
+            icon2 = {<FaRegEye />}
           />
           <div className=" w-full flex justify-end items-center mt-5">
             <Pagination
