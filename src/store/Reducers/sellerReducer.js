@@ -40,6 +40,25 @@ export const get_seller = createAsyncThunk(
 );
 // end get_seller method
 
+
+export const seller_status_update = createAsyncThunk(
+  "seller/seller_status_update",
+  async (info, { rejectWithValue, fulfillWithValue }) => {
+
+    try {        
+      const { data } = await api.post(`/seller-status-update`,info, {
+        withCredentials: true,  
+      });
+      // console.log(data);
+      return fulfillWithValue(data);
+    } catch (error) {
+      // console.log(error.response.data.error);
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
+// end seller_status_update method
+
 export const sellerReducer = createSlice({
   name: "seller",
   initialState: {
@@ -67,6 +86,11 @@ export const sellerReducer = createSlice({
 
       .addCase(get_seller.fulfilled, (state, { payload }) => {
         state.seller = payload.seller;
+      })
+
+      .addCase(seller_status_update.fulfilled, (state, { payload }) => {
+        state.seller = payload.seller;
+        state.successMessage = payload.message;
       })
   }
 });

@@ -1,18 +1,41 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { get_seller} from "../../store/Reducers/sellerReducer";
+import { get_seller, seller_status_update } from "../../store/Reducers/sellerReducer";
+import { messageClear,} from "../../store/Reducers/sellerReducer";
+import toast from "react-hot-toast";
 
 const SellerDetails = () => {
 
   const dispatch = useDispatch();
-  const { seller } = useSelector((state) => state.seller);
+  const { seller, successMessage } = useSelector((state) => state.seller);
   const {sellerId} = useParams()
 
     useEffect(() =>{
       dispatch(get_seller(sellerId))
     }, [sellerId])
-  
+    
+    const [status, setStatus] = useState('')
+    const submit = (e) =>{
+         e.preventDefault();
+         dispatch(seller_status_update({
+            sellerId,
+            status
+         }))
+    }
+
+    useEffect(() => {
+        if (successMessage) {
+          toast.success(successMessage);
+          dispatch(messageClear());
+        }
+      }, [successMessage, dispatch]);
+ 
+    useEffect(() => {
+        if (seller) {
+          setStatus(seller.status)
+        }
+      }, [seller]);
  
 
   return (
@@ -97,9 +120,9 @@ const SellerDetails = () => {
 
 
         <div className="">
-            <form action="">
+            <form onSubmit={submit}>
                 <div className="flex gap-4 py-3">
-                <select className='px-4 py-2 hover:border-[#134d49] outline-none bg-[#39a290] border border-[#8ae1db]  rounded-md text-[#d0d2d6] '>
+                <select value={status} onChange={(e) =>setStatus(e.target.value)} className='px-4 py-2 hover:border-[#134d49] outline-none bg-[#39a290] border border-[#8ae1db]  rounded-md text-[#d0d2d6] ' required>
                         <option value="">--Select Status--</option>
                         <option value="Active">Active</option>
                         <option value="Deactive">Deactive</option>
